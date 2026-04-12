@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>법무사 김현수 사무소 | 메인 시안 v49</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
+    :root{--bg:#f3f6fb;--surface:#ffffff;--surface-soft:#f7faff;--surface-muted:#eef3f9;--ink:#0f172a;--muted:#475569;--line:#dde5ef;--brand:#1d4ed8;--brand-soft:#dbeafe;--navy:#09111f;--navy-2:#101b31;--shadow-lg:0 32px 100px rgba(15,23,42,.08);--shadow-md:0 20px 56px rgba(15,23,42,.06)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Pretendard,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1280px,calc(100% - 48px));margin:0 auto}
+    .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .section-title{font-size:clamp(44px,4vw,64px);line-height:1.04;font-weight:800;letter-spacing:-.05em;word-break:keep-all}
+    .section-body{font-size:clamp(18px,1.55vw,20px);line-height:1.85;color:var(--muted);word-break:keep-all}
+    .card-title{font-size:30px;line-height:1.18;font-weight:800;letter-spacing:-.03em}
+    .card-body{font-size:17px;line-height:1.82;color:var(--muted)}
+    .meta{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .btn-primary,.btn-secondary,.btn-dark{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;padding:0 28px;height:60px;font-size:16px;font-weight:700;transition:.2s ease}
+    .btn-primary{background:#fff;color:var(--ink)} .btn-primary:hover{background:#eff6ff}
+    .btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px)} .btn-secondary:hover{background:rgba(255,255,255,.14)}
+    .btn-dark{background:var(--navy);color:#fff} .btn-dark:hover{background:#16233f}
+    .panel{background:rgba(255,255,255,.94);border:1px solid rgba(221,229,239,.85);border-radius:34px;box-shadow:var(--shadow-lg)}
+    .panel-soft{background:linear-gradient(180deg,#f8fbff 0%, #f4f7fb 100%);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow-md)}
+    .section{position:relative;padding:110px 0}
+    .section.dark{background:linear-gradient(180deg,#09111f 0%, #0d172b 54%, #11203a 100%);color:#fff}
+    .section.soft{background:linear-gradient(180deg,#f8fbff 0%, #f2f5fb 100%)}
+    .header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .25s ease,border-color .25s ease,box-shadow .25s ease,backdrop-filter .25s ease}
+    .header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.34) 0%, rgba(2,6,23,.14) 55%, rgba(2,6,23,0) 100%);opacity:1;transition:opacity .25s ease;pointer-events:none}
+    .header-inner{position:relative;display:flex;align-items:center;justify-content:space-between;padding:22px 0;transition:padding .25s ease}
+    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.03em;color:#ffffff;transition:color .25s ease}
+    .brand-sub{margin-top:4px;font-size:13px;color:rgba(226,232,240,.82);transition:color .25s ease}
+    .nav{display:flex;align-items:center;gap:34px}
+    .nav a{font-size:15px;font-weight:600;color:#ffffff;transition:color .25s ease}
+    .nav a:hover{color:#dbeafe}
+    .header-cta{background:#ffffff;color:#0f172a;transition:background .25s ease,color .25s ease,border-color .25s ease}
+    .header-cta:hover{background:#eff6ff}
+    .header.scrolled{border-bottom:1px solid rgba(226,232,240,.8);background:rgba(255,255,255,.9);backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(15,23,42,.05)}
+    .header.scrolled::before{opacity:0}
+    .header.scrolled .brand-title{color:#0f172a}
+    .header.scrolled .brand-sub{color:#64748b}
+    .header.scrolled .nav a{color:#475569}
+    .header.scrolled .nav a:hover{color:#0f172a}
+    .header.scrolled .header-cta{background:#09111f;color:#ffffff}
+    .header.scrolled .header-cta:hover{background:#16233f}
+
+    .hero{min-height:78vh;padding:40px 0 56px;background:linear-gradient(118deg, rgba(5,10,22,.94) 0%, rgba(9,18,36,.8) 35%, rgba(12,30,58,.44) 65%, rgba(12,30,58,.14) 100%), url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;color:#fff;display:flex;align-items:center;text-align:center}
+    .hero-inner{max-width:980px;margin:0 auto}
+    .hero-title{font-size:clamp(66px,6.3vw,96px);line-height:.98;font-weight:800;letter-spacing:-.06em;word-break:keep-all}
+    .hero-body{margin:24px auto 0;max-width:720px;font-size:20px;line-height:1.82;color:#dbe5f3}
+    .hero-actions{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .hero-tags{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .hero-tag{padding:14px 18px;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:700;color:#fff;backdrop-filter:blur(12px)}
+
+    .hero-guide{margin-top:0;position:relative;z-index:1}
+    .guide-panel{padding:42px}
+    .guide-top{display:grid;grid-template-columns:.86fr 1.14fr;gap:28px;align-items:end}
+    .guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+    .guide-card{padding:30px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+
+    .intro-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:30px;align-items:stretch}
+    .intro-copy{padding-right:24px}
+    .intro-stack{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .intro-card{padding:30px}
+
+    .services-layout{display:grid;grid-template-columns:.84fr 1.16fr;gap:28px;align-items:stretch}
+    .services-feature{padding:42px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#0d172b 0%, #142341 100%);border-radius:34px;color:#fff;box-shadow:0 28px 90px rgba(2,6,23,.18)}
+    .services-list{display:grid;gap:18px}
+    .service-row{display:grid;grid-template-columns:140px 1fr;gap:26px;align-items:start;padding:30px;border-radius:30px;background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--shadow-md)}
+    .service-index{font-size:54px;line-height:1;font-weight:800;letter-spacing:-.05em;color:#c7d7f3}
+
+    .scope-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:28px;align-items:end}
+    .scope-groups{display:grid;gap:34px;margin-top:42px}
+    .scope-group{display:grid;gap:18px;padding:22px;border-radius:34px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .scope-group-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:2px 4px 0}
+    .scope-group-title{font-size:22px;font-weight:800;letter-spacing:-.03em;color:#ffffff}
+    .scope-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .scope-card{min-height:208px;border-radius:28px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);padding:26px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;color:#ffffff;cursor:pointer;transition:.25s ease;box-shadow:none}
+    .scope-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.16)}
+    .scope-card.active{background:linear-gradient(180deg,#0f172a 0%, #18253f 100%);color:#ffffff;border-color:rgba(255,255,255,.12);box-shadow:0 26px 80px rgba(2,6,23,.24)}
+    .scope-card.active .meta{color:#bfdbfe}
+    .scope-card-kicker{font-size:13px;line-height:1.55;color:rgba(226,232,240,.82)}
+    .scope-name{margin-top:10px;font-size:27px;line-height:1.16;font-weight:800;letter-spacing:-.03em}
+    .scope-detail{margin-top:32px;padding:56px 52px;min-height:360px;border-radius:36px;background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);color:#0f172a;border:1px solid rgba(226,232,240,.95);box-shadow:0 30px 90px rgba(2,6,23,.18)}
+    .scope-inline-detail{display:none}
+    .scope-detail-label{display:inline-flex;align-items:center;padding:10px 14px;border-radius:9999px;background:#eaf2ff;color:#1d4ed8;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .scope-detail h3{margin:16px 0 0;font-size:40px;line-height:1.14;font-weight:800;letter-spacing:-.04em}
+    .scope-detail-lead{margin:18px 0 0;max-width:980px;font-size:19px;line-height:1.8;color:#1e293b;font-weight:700}
+    .scope-detail p{margin:14px 0 0;max-width:980px;font-size:20px;line-height:1.88;color:#334155}
+    .scope-detail-cta{margin-top:26px;display:inline-flex;align-items:center;justify-content:center;padding:0 22px;height:52px;border-radius:9999px;background:#0f172a;color:#ffffff;font-size:15px;font-weight:700}
+
+    .why-layout{display:grid;grid-template-columns:1.02fr .98fr;gap:28px;align-items:stretch}
+    .why-main{padding:46px}
+    .why-side{display:grid;gap:18px}
+    .why-block{padding:32px}
+
+    .process-layout{display:grid;grid-template-columns:.86fr 1.14fr;gap:28px;align-items:start}
+    .process-copy{padding-right:12px}
+    .process-track{display:grid;gap:16px}
+    .process-step{display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:start;padding:28px 32px;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-md)}
+    .process-step strong{display:block;font-size:36px;line-height:1;font-weight:800;letter-spacing:-.04em;color:#d0def6}
+
+    .reviews-top{display:grid;grid-template-columns:.74fr 1.26fr;gap:24px;align-items:end}
+    .review-controls{display:flex;justify-content:flex-end;gap:10px}
+    .review-arrow{width:54px;height:54px;border:none;border-radius:9999px;background:#fff;color:#0f172a;font-size:20px;font-weight:800;box-shadow:var(--shadow-md);cursor:pointer}
+    .review-viewport{margin-top:34px;overflow:hidden;position:relative}
+    .review-viewport::before,.review-viewport::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+    .review-viewport::before{left:0;background:linear-gradient(90deg,#f3f6fb 0%, rgba(243,246,251,0) 100%)}
+    .review-viewport::after{right:0;background:linear-gradient(270deg,#f3f6fb 0%, rgba(243,246,251,0) 100%)}
+    .review-track{display:flex;gap:20px;width:max-content;animation:marquee 42s linear infinite;will-change:transform}
+    .review-card{min-width:390px;max-width:390px;min-height:340px;padding:34px;border-radius:30px;background:linear-gradient(180deg,#ffffff 0%, #fbfcfd 100%);border:1px solid var(--line);box-shadow:var(--shadow-md);display:flex;flex-direction:column;justify-content:space-between}
+    .review-viewport:hover .review-track{animation-play-state:paused}
+    .review-headline{font-size:22px;line-height:1.42;font-weight:800;letter-spacing:-.02em}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 10px))}}
+
+    .contact-wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:stretch}
+    .contact-copy{padding:6px 0}
+    .contact-card{padding:30px;display:grid;gap:14px;border-radius:32px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(16px)}
+    .contact-line{padding:18px 20px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:17px;font-weight:600;color:#e2e8f0}
+    .footer{background:#08101d;color:#cbd5e1;border-top:1px solid rgba(255,255,255,.08)}
+    .footer p{margin:0;font-size:14px;line-height:1.9}
+
+    @media (max-width:1279px){
+      .guide-top,.intro-grid,.services-layout,.scope-head,.why-layout,.process-layout,.reviews-top,.contact-wrap{grid-template-columns:1fr}
+      .guide-grid,.scope-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .intro-stack{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:767px){
+      .container{width:min(100% - 56px, 1280px)}
+      .header-inner{padding:16px 0;justify-content:center}
+      .brand-title{font-size:20px;text-align:center}
+      .brand-sub{display:block;text-align:center;margin-top:4px;font-size:12px}
+      .nav{display:none}
+      .section{padding:44px 0}
+      .hero{min-height:auto;padding:78px 0 22px}
+      .hero-inner{max-width:100%}
+      .hero-title{font-size:29px;line-height:1.08;letter-spacing:-.05em;max-width:11ch;margin:0 auto}
+      .hero-body{font-size:14px;line-height:1.5;max-width:30ch;margin:12px auto 0;color:#e2e8f0}
+      .hero-tags{display:none}
+      .guide-grid,.intro-stack,.scope-grid{grid-template-columns:1fr}
+      .guide-panel,.why-main,.contact-card{padding:20px;border-radius:24px}
+      .guide-top{gap:10px}
+      .guide-grid,.intro-stack,.services-list,.why-side,.process-track{gap:10px}
+      .guide-card,.intro-card,.why-block{min-height:auto;padding:16px;border-radius:20px}
+      .section-title{font-size:26px;line-height:1.14;letter-spacing:-.04em}
+      .section-body{font-size:14px;line-height:1.62}
+      .guide-card .card-title,.intro-card .card-title,.why-block .card-title{font-size:18px;line-height:1.24}
+      .guide-card .card-body,.intro-card .card-body{font-size:14px;line-height:1.55}
+      .guide-card .card-body{max-width:28ch}
+      .intro-copy{padding-right:0}
+      .services-feature{padding:20px;border-radius:24px}
+      .service-row,.process-step{grid-template-columns:1fr;padding:16px;border-radius:20px;gap:10px}
+      .service-index{font-size:32px}
+      .scope-head{gap:16px}
+      .scope-groups{gap:10px;margin-top:16px}
+      .scope-group{padding:0;border:none;background:transparent}
+      .scope-group-head{padding:0 2px}
+      .scope-group-title{font-size:16px}
+      .scope-group .meta{font-size:11px}
+      .scope-grid{gap:10px}
+      .scope-card{min-height:auto;padding:16px;border-radius:20px}
+      .scope-name{font-size:18px;line-height:1.22;margin-top:6px}
+      .scope-card-kicker{font-size:11px;line-height:1.35;margin-top:6px}
+      .scope-detail{padding:20px;border-radius:20px;min-height:auto;margin-top:16px}
+      .scope-detail-label{font-size:10px;padding:7px 11px}
+      .scope-detail h3{font-size:21px;line-height:1.2}
+      .scope-detail-lead{font-size:14px;line-height:1.55;margin-top:12px}
+      .scope-detail p{font-size:15px;line-height:1.62;margin-top:10px}
+      .scope-detail-cta{width:100%;height:52px;margin-top:18px}
+      .scope-inline-detail{display:block;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+      .scope-inline-detail h4{font-size:15px;line-height:1.35;font-weight:800;letter-spacing:-.02em;color:#ffffff}
+      .scope-inline-detail p{margin-top:8px;font-size:13px;line-height:1.55;color:rgba(226,232,240,.88)}
+      .scope-inline-detail a{margin-top:10px;display:inline-flex;font-size:13px;font-weight:700;color:#dbeafe}
+      .scope-card .scope-inline-detail{display:none}
+      .scope-card.active .scope-inline-detail{display:block}
+      .scope-detail{display:none}
+      .process-step strong{font-size:24px}
+      .review-card{min-width:244px;max-width:244px;min-height:232px;padding:16px;border-radius:20px}
+      .review-headline{font-size:16px;line-height:1.26}
+      .review-viewport::before,.review-viewport::after{width:16px}
+      .contact-line{padding:13px 14px;font-size:14px}
+      .btn-primary,.btn-secondary,.btn-dark{width:auto;min-width:0;height:52px;padding:0 18px;align-self:center}
+      .btn-secondary{opacity:.82}
+      .hero-actions{flex-direction:column;gap:8px;max-width:280px;margin-left:auto;margin-right:auto}
+      .hero-guide{margin-top:0}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div>
+        <div class="brand-title">법무사 김현수 사무소</div>
+        <div class="brand-sub">법인등기 · 부동산등기 · 개인회생/파산</div>
+      </div>
+      <nav class="nav">
+        <a href="#guide">안내</a>
+        <a href="#services">업무분야</a>
+        <a href="#scope">세부업무</a>
+        <a href="#contact">문의</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="eyebrow text-blue-200">Professional Counsel</div>
+        <h1 class="hero-title">지금 필요한 절차부터<br>확인해보세요</h1>
+        <p class="hero-body">법인등기, 부동산등기, 개인회생·파산까지. 지금 상황에 맞는 절차와 준비사항을 차분하게 안내해드립니다.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">카카오톡 상담하기</a>
+          <a href="#services" class="btn-secondary">업무 내용 확인하기</a>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">법인등기 전문</span>
+          <span class="hero-tag">쉽게 이해되는 설명</span>
+          <span class="hero-tag">진행 단계별 안내</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide" class="section soft hero-guide">
+    <div class="container">
+      <div class="panel guide-panel">
+        <div class="guide-top">
+          <div>
+            <div class="eyebrow text-blue-700">Guide</div>
+            <h2 class="section-title mt-3">어떤 업무인지 몰라도 괜찮습니다</h2>
+          </div>
+          <p class="section-body">법인 설립, 임원 변경, 본점 이전, 부동산 이전등기, 개인회생과 파산까지. 지금 필요한 절차가 무엇인지부터 차근차근 확인하실 수 있도록 안내해드립니다.</p>
+        </div>
+        <div class="guide-grid">
+          <div class="panel-soft guide-card"><div><div class="meta text-blue-700">01</div><div class="card-title mt-4">현재 상황 확인</div></div><p class="card-body">지금 필요한 절차가 무엇인지 먼저 정리합니다.</p></div>
+          <div class="panel-soft guide-card"><div><div class="meta text-blue-700">02</div><div class="card-title mt-4">준비사항 이해</div></div><p class="card-body">준비해야 할 내용만 쉽게 확인하실 수 있습니다.</p></div>
+          <div class="panel-soft guide-card"><div><div class="meta text-blue-700">03</div><div class="card-title mt-4">중요한 절차는 더 신중하게</div></div><p class="card-body">꼭 확인할 핵심을 놓치지 않도록 안내합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container intro-grid">
+      <div class="intro-copy">
+        <div class="eyebrow text-blue-700">Positioning</div>
+        <h2 class="section-title mt-3">복잡할수록 더 쉽게</h2>
+        <p class="section-body mt-6">무엇을 먼저 준비해야 하는지, 어떤 순서로 진행되는지 한 번에 이해하실 수 있도록 현재 상황에 맞는 절차를 보기 쉽게 설명해드립니다.</p>
+      </div>
+      <div class="intro-stack">
+        <div class="panel intro-card"><div class="meta text-blue-700">01</div><div class="card-title mt-4">지금 상황부터 먼저 확인</div><p class="card-body mt-4">무엇부터 시작해야 할지 막막한 경우에도 현재 상황을 먼저 확인하고 필요한 절차를 짚어드립니다.</p></div>
+        <div class="panel-soft intro-card"><div class="meta text-blue-700">02</div><div class="card-title mt-4">절차를 이해하기 쉽게 설명</div><p class="card-body mt-4">복잡한 절차일수록 이해하기 쉬운 말로 설명해 부담 없이 상담하실 수 있도록 돕습니다.</p></div>
+        <div class="panel-soft intro-card"><div class="meta text-blue-700">03</div><div class="card-title mt-4">준비하실 서류를 명확하게 안내</div><p class="card-body mt-4">누락 없이 준비하실 수 있도록 필요한 서류와 순서를 한 번에 이해하실 수 있게 설명합니다.</p></div>
+        <div class="panel intro-card"><div class="meta text-blue-700">04</div><div class="card-title mt-4">진행 흐름을 한눈에 확인</div><p class="card-body mt-4">상담 이후 어떤 순서로 진행되는지 미리 알 수 있어 보다 편하게 준비하실 수 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section soft">
+    <div class="container services-layout">
+      <div class="services-feature">
+        <div>
+          <div class="eyebrow text-blue-200">Core Services</div>
+          <h2 class="section-title mt-4">필요한 업무부터<br>확인하세요</h2>
+          <p class="mt-6 text-[18px] leading-8 text-slate-300">법인등기, 부동산등기, 개인회생·파산 등 자주 문의하시는 업무를 중심으로 지금 상황에 맞는 방향을 먼저 살펴보실 수 있습니다.</p>
+        </div>
+        <div class="panel-soft" style="padding:22px;border-radius:24px"><div class="meta text-blue-700">상담 전 체크</div><div class="mt-3 text-[22px] font-extrabold tracking-tight text-slate-950">어떤 업무에 해당하는지부터 차근차근 확인해보세요</div></div>
+      </div>
+      <div class="services-list">
+        <article class="service-row"><div class="service-index">01</div><div><div class="meta text-blue-700">Corporate Registration</div><h3 class="card-title mt-3">법인등기</h3><p class="card-body mt-4">법인 설립, 임원 변경, 본점 이전, 증자 등 회사 운영 중 자주 필요한 등기 업무를 현재 상황에 맞게 안내하고 진행합니다.</p></div></article>
+        <article class="service-row"><div class="service-index">02</div><div><div class="meta text-blue-700">Real Estate Registration</div><h3 class="card-title mt-3">부동산등기</h3><p class="card-body mt-4">부동산 이전등기, 설정등기 등 중요한 자산과 관련된 절차를 이해하기 쉽게 설명하고 필요한 흐름에 맞춰 진행합니다.</p></div></article>
+        <article class="service-row"><div class="service-index">03</div><div><div class="meta text-blue-700">Rehabilitation & Bankruptcy</div><h3 class="card-title mt-3">개인회생 / 파산</h3><p class="card-body mt-4">부담이 큰 절차일수록 현재 상황을 먼저 살펴보고, 이해하기 쉬운 설명과 함께 필요한 진행 방향을 안내합니다.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="scope" class="section dark">
+    <div class="container">
+      <div class="scope-head">
+        <div>
+          <div class="eyebrow text-blue-300">Scope of Work</div>
+          <h2 class="section-title mt-3">상황별 절차 안내</h2>
+        </div>
+        <p class="section-body text-slate-300">아래 항목 중 현재 상황과 가까운 업무를 선택하시면, 어떤 절차가 필요한지 바로 이어서 확인하실 수 있습니다.</p>
+      </div>
+      <div class="scope-groups" id="scopeGrid">
+        <div class="scope-group">
+          <div class="scope-group-head"><div class="scope-group-title">법인등기 관련 절차</div><div class="meta text-blue-200">Corporate</div></div>
+          <div class="scope-grid">
+            <button class="scope-card active" data-label="법인등기 관련" data-title="법인 설립" data-lead="회사를 새로 시작하는 경우 가장 먼저 확인하게 되는 절차입니다." data-desc="법인을 새로 설립하실 때 필요한 기본 절차와 준비 서류를 정리하고, 설립등기까지 정확하게 진행합니다."><div><span class="meta">01</span><span class="scope-name">법인 설립</span></div><div class="scope-card-kicker">회사를 새로 시작하는 경우</div><div class="scope-inline-detail"><h4>회사를 새로 시작하는 경우</h4><p>필요한 기본 절차와 준비 서류를 정리하고 설립등기까지 정확하게 안내합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="법인등기 관련" data-title="임원 변경" data-lead="대표이사나 임원 구성이 바뀌는 경우 필요한 절차입니다." data-desc="대표이사, 이사, 감사 변경 등 임원 관련 등기사항을 확인하고 필요한 절차에 맞춰 변경등기를 진행합니다."><div><span class="meta">02</span><span class="scope-name">임원 변경</span></div><div class="scope-card-kicker">임원이 변경된 경우</div><div class="scope-inline-detail"><h4>임원이 변경된 경우</h4><p>대표이사, 이사, 감사 변경 등 필요한 절차를 정리해 변경등기를 진행합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="법인등기 관련" data-title="본점 이전" data-lead="회사 주소가 바뀌는 경우 꼭 확인해야 하는 절차입니다." data-desc="본점 주소가 바뀌는 경우 관내·관외 이전 여부에 따라 필요한 서류와 절차를 구분해 정확하게 진행합니다."><div><span class="meta">03</span><span class="scope-name">본점 이전</span></div><div class="scope-card-kicker">회사 주소가 바뀐 경우</div><div class="scope-inline-detail"><h4>회사 주소가 바뀐 경우</h4><p>관내·관외 여부에 따라 필요한 서류와 절차를 구분해 정확하게 진행합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="법인등기 관련" data-title="증자" data-lead="자본금을 늘리거나 투자 관련 절차가 필요한 경우 확인하게 됩니다." data-desc="증자를 진행하실 때 필요한 의사결정, 서류 준비, 등기 절차를 정리해 누락 없이 진행합니다."><div><span class="meta">04</span><span class="scope-name">증자</span></div><div class="scope-card-kicker">자본금을 늘려야 하는 경우</div><div class="scope-inline-detail"><h4>자본금을 늘려야 하는 경우</h4><p>의사결정, 서류 준비, 등기 절차를 정리해 누락 없이 진행합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-head"><div class="scope-group-title">부동산 · 개인 절차</div><div class="meta text-blue-200">Personal & Property</div></div>
+          <div class="scope-grid">
+            <button class="scope-card" data-label="부동산 · 개인 절차" data-title="부동산 이전등기" data-lead="중요한 자산이 이전되는 경우 필요한 절차입니다." data-desc="중요한 자산 이전 과정에서 필요한 확인 사항과 서류를 검토하고 이전등기를 정확하게 처리합니다."><div><span class="meta">05</span><span class="scope-name">부동산 이전등기</span></div><div class="scope-card-kicker">소유권이 바뀌는 경우</div><div class="scope-inline-detail"><h4>소유권이 바뀌는 경우</h4><p>이전 과정에서 필요한 확인 사항과 서류를 검토하고 정확하게 진행합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="부동산 · 개인 절차" data-title="설정등기" data-lead="담보권이나 전세권 설정이 필요한 경우 확인하는 절차입니다." data-desc="근저당권, 전세권 등 설정등기 업무를 필요한 절차에 맞게 정리하고 진행합니다."><div><span class="meta">06</span><span class="scope-name">설정등기</span></div><div class="scope-card-kicker">담보 설정이 필요한 경우</div><div class="scope-inline-detail"><h4>담보 설정이 필요한 경우</h4><p>근저당권, 전세권 등 필요한 절차를 정리해 진행합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="부동산 · 개인 절차" data-title="개인회생" data-lead="현재 채무 상황을 정리하고 회생 가능성을 확인하는 절차입니다." data-desc="현재 상황을 먼저 확인한 뒤, 개인회생 절차와 준비사항을 이해하기 쉽게 설명하고 진행 방향을 안내합니다."><div><span class="meta">07</span><span class="scope-name">개인회생</span></div><div class="scope-card-kicker">채무 조정이 필요한 경우</div><div class="scope-inline-detail"><h4>채무 조정이 필요한 경우</h4><p>개인회생 절차와 준비사항을 쉽게 설명하고 진행 방향을 안내합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+            <button class="scope-card" data-label="부동산 · 개인 절차" data-title="파산 절차 안내" data-lead="부담이 큰 상황일수록 신중하게 검토해야 하는 절차입니다." data-desc="복잡하고 부담이 큰 파산 절차일수록 이해하기 쉽게 설명하고 상황에 맞는 진행 방향을 안내합니다."><div><span class="meta">08</span><span class="scope-name">파산 절차 안내</span></div><div class="scope-card-kicker">파산 검토가 필요한 경우</div><div class="scope-inline-detail"><h4>파산 검토가 필요한 경우</h4><p>복잡하고 부담이 큰 절차일수록 현재 상황에 맞는 방향을 차분하게 안내합니다.</p><a href="#contact">이 업무 상담하기</a></div></button>
+          </div>
+        </div>
+      </div>
+      <div class="scope-detail" id="scopeDetail"><span class="scope-detail-label" id="scopeLabel">법인등기 관련</span><h3 id="scopeTitle">법인 설립</h3><p class="scope-detail-lead" id="scopeLead">회사를 새로 시작하는 경우 가장 먼저 확인하게 되는 절차입니다.</p><p id="scopeDesc">법인을 새로 설립하실 때 필요한 기본 절차와 준비 서류를 정리하고, 설립등기까지 정확하게 진행합니다.</p><a href="#contact" class="scope-detail-cta">이 업무 상담하기</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container why-layout">
+      <div class="panel why-main">
+        <div class="eyebrow text-blue-700">Why Choose Us</div>
+        <h2 class="section-title mt-4">상담 전 체크포인트</h2>
+        <p class="section-body mt-6">처음 문의하실 때 많이 궁금해하시는 기준을 중심으로, 어떤 점에서 더 편하게 상담하실 수 있는지 정리했습니다.</p>
+      </div>
+      <div class="why-side">
+        <div class="panel-soft why-block"><div class="meta text-blue-700">01</div><div class="card-title mt-4">전문 법무사가 직접 확인하고 진행합니다</div></div>
+        <div class="panel why-block"><div class="meta text-blue-700">02</div><div class="card-title mt-4">상담 내용을 빠르게 이해하실 수 있습니다</div></div>
+        <div class="panel why-block"><div class="meta text-blue-700">03</div><div class="card-title mt-4">복잡한 절차도 쉽게 설명해드립니다</div></div>
+        <div class="services-feature why-block"><div><div class="meta text-blue-200">04</div><div class="card-title mt-4 text-white">진행 중 무엇을 준비해야 하는지 놓치지 않도록 안내합니다</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container process-layout">
+      <div class="process-copy">
+        <div class="eyebrow text-blue-700">Process</div>
+        <h2 class="section-title mt-4">진행 흐름 한눈에 보기</h2>
+        <p class="section-body mt-6">처음 문의하시는 경우에도 부담 없이 준비하실 수 있도록, 상담부터 완료까지의 흐름을 이해하기 쉽게 정리했습니다.</p>
+      </div>
+      <div class="process-track">
+        <div class="process-step"><strong>01</strong><div><div class="card-title">상담</div><p class="card-body mt-3">현재 상황과 어떤 업무가 필요한지 먼저 확인합니다.</p></div></div>
+        <div class="process-step"><strong>02</strong><div><div class="card-title">절차 안내</div><p class="card-body mt-3">준비하실 서류와 진행 순서를 한 번에 이해하실 수 있게 설명합니다.</p></div></div>
+        <div class="process-step"><strong>03</strong><div><div class="card-title">업무 진행</div><p class="card-body mt-3">확인된 내용에 따라 필요한 절차를 정확하게 진행합니다.</p></div></div>
+        <div class="process-step"><strong>04</strong><div><div class="card-title">완료 및 안내</div><p class="card-body mt-3">진행 결과와 이후 확인하실 사항까지 놓치지 않도록 안내합니다.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="reviews-top">
+        <div>
+          <div class="eyebrow text-blue-700">Reviews</div>
+          <h2 class="section-title mt-4">실제 상담 후기</h2>
+          <p class="section-body mt-6">실제 문의와 진행 과정에서 어떤 점이 만족스러웠는지 확인해보시면 상담 전 판단에 도움이 됩니다.</p>
+        </div>
+        <div class="review-controls"><button class="review-arrow" data-direction="prev">←</button><button class="review-arrow" data-direction="next">→</button></div>
+      </div>
+      <div class="review-viewport"><div class="review-track" id="reviewTrack">
+        <article class="review-card"><div><div class="review-headline">법인등기가 신속하고 편리해요.</div><p class="card-body mt-5">비용을 홈페이지에서 어느 정도 알 수 있어 좋았고, 전화 문의도 친절하고 깔끔하게 설명해주셔서 좋았습니다. 소요기간과 진행과정 설명도 명확했고, 일처리도 빠르고 깔끔했습니다.</p></div><div class="mt-8 text-sm text-slate-400">법인 설립 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">일처리가 깔끔해서 만족스러웠습니다.</div><p class="card-body mt-5">법인등기도 빠르고 저렴하게 이용할 수 있었고, 복잡한 전세권설정 등기도 친절하게 설명해주시면서 진행해주셔서 만족스러웠습니다.</p></div><div class="mt-8 text-sm text-slate-400">전세권설정 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">처리 속도가 빨라서 좋았습니다.</div><p class="card-body mt-5">본점이전 건이라 복잡할 거라고 생각했는데 설명이 깔끔했고, 처음 문의할 때부터 응대가 친절해서 안심하고 맡길 수 있었습니다.</p></div><div class="mt-8 text-sm text-slate-400">본점이전 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">설명이 쉬워서 부담이 줄었습니다.</div><p class="card-body mt-5">복잡한 법인설립등기를 알아듣기 쉽게 설명해주셨고, 예상보다 빠르게 마무리되어 만족스러웠습니다. 빠르고 깔끔하게 진행돼 좋았습니다.</p></div><div class="mt-8 text-sm text-slate-400">법인설립 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">궁금한 점을 자세히 설명해주셨어요.</div><p class="card-body mt-5">전환사채등기 상담 과정에서 궁금한 점이 많았는데, 하나씩 자세히 설명해주셔서 진행 여부를 판단하는 데 큰 도움이 되었습니다.</p></div><div class="mt-8 text-sm text-slate-400">전환사채 등기 상담 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">법인등기가 신속하고 편리해요.</div><p class="card-body mt-5">비용을 홈페이지에서 어느 정도 알 수 있어 좋았고, 전화 문의도 친절하고 깔끔하게 설명해주셔서 좋았습니다. 소요기간과 진행과정 설명도 명확했고, 일처리도 빠르고 깔끔했습니다.</p></div><div class="mt-8 text-sm text-slate-400">법인 설립 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">일처리가 깔끔해서 만족스러웠습니다.</div><p class="card-body mt-5">법인등기도 빠르고 저렴하게 이용할 수 있었고, 복잡한 전세권설정 등기도 친절하게 설명해주시면서 진행해주셔서 만족스러웠습니다.</p></div><div class="mt-8 text-sm text-slate-400">전세권설정 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">처리 속도가 빨라서 좋았습니다.</div><p class="card-body mt-5">본점이전 건이라 복잡할 거라고 생각했는데 설명이 깔끔했고, 처음 문의할 때부터 응대가 친절해서 안심하고 맡길 수 있었습니다.</p></div><div class="mt-8 text-sm text-slate-400">본점이전 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">설명이 쉬워서 부담이 줄었습니다.</div><p class="card-body mt-5">복잡한 법인설립등기를 알아듣기 쉽게 설명해주셨고, 예상보다 빠르게 마무리되어 만족스러웠습니다. 빠르고 깔끔하게 진행돼 좋았습니다.</p></div><div class="mt-8 text-sm text-slate-400">법인설립 등기 진행 고객</div></article>
+        <article class="review-card"><div><div class="review-headline">궁금한 점을 자세히 설명해주셨어요.</div><p class="card-body mt-5">전환사채등기 상담 과정에서 궁금한 점이 많았는데, 하나씩 자세히 설명해주셔서 진행 여부를 판단하는 데 큰 도움이 되었습니다.</p></div><div class="mt-8 text-sm text-slate-400">전환사채 등기 상담 고객</div></article>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section dark">
+    <div class="container contact-wrap">
+      <div class="contact-copy">
+        <div class="eyebrow text-blue-200">Contact</div>
+        <h2 class="section-title mt-4">편하게 상담해보세요</h2>
+        <p class="mt-6 max-w-3xl text-[19px] leading-9 text-slate-300">현재 상황을 말씀해주시면 필요한 절차와 준비사항을 정리해 안내해드립니다. 처음 문의하시는 경우에도 부담 없이 상담하실 수 있습니다.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-line">TEL · 02-430-0980</div>
+        <div class="contact-line">FAX · 02-431-0980</div>
+        <div class="contact-line">EMAIL · fwpna@naver.com</div>
+        <a href="#" class="btn-primary">카카오톡 상담하기</a>
+        <a href="tel:02-430-0980" class="btn-secondary">전화 문의하기</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container" style="padding:28px 0 34px"><p>회사명 : 법무사김현수사무소 ㅣ 사업자번호 : 722-06-02376 ㅣ 개인정보관리책임자 : 김현수 법무사 ㅣ 주소 : 서울 송파구 법원로8길 13, 12층 1213호(문정동, 문정헤리움써밋타워)<br>TEL : 02-430-0980 ㅣ FAX : 02-431-0980 ㅣ 이메일 : fwpna@naver.com</p></div></footer>
+
+  <script>
+    const header=document.querySelector('.header');
+    function syncHeader(){ if(!header) return; if(window.scrollY > 24){ header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); } }
+    syncHeader(); window.addEventListener('scroll', syncHeader, { passive:true });
+    const scopeCards=document.querySelectorAll('.scope-card');
+    const scopeLabel=document.getElementById('scopeLabel');
+    const scopeTitle=document.getElementById('scopeTitle');
+    const scopeLead=document.getElementById('scopeLead');
+    const scopeDesc=document.getElementById('scopeDesc');
+    scopeCards.forEach(card=>{card.addEventListener('click',()=>{scopeCards.forEach(c=>c.classList.remove('active'));card.classList.add('active');scopeLabel.textContent=card.dataset.label;scopeTitle.textContent=card.dataset.title;scopeLead.textContent=card.dataset.lead;scopeDesc.textContent=card.dataset.desc;});});
+    const reviewTrack=document.getElementById('reviewTrack');
+    const reviewButtons=document.querySelectorAll('.review-arrow');
+    let reviewOffset=0; const reviewStep=410;
+    function updateReviews(){reviewTrack.style.animation='none';reviewTrack.style.transform=`translateX(${reviewOffset}px)`;}
+    reviewButtons.forEach(button=>{button.addEventListener('click',()=>{const dir=button.dataset.direction;if(dir==='next'){reviewOffset-=reviewStep;}else{reviewOffset+=reviewStep;}updateReviews();});});
+    document.querySelector('.review-viewport')?.addEventListener('mouseleave',()=>{reviewTrack.style.animation='marquee 42s linear infinite';});
+  </script>
+</body>
+</html>
