@@ -16,11 +16,11 @@
       --ink: #0f172a;
       --muted: #475569;
       --brand: #1d4fba;
-      --brand-dark: #0b1d46;
-      --brand-grad: linear-gradient(to right, #0b1d46, #1d4fba);
-      --navy: #0b1320;
-      --shadow-lg: 0 32px 100px rgba(11, 29, 70, .11);
-      --shadow-md: 0 20px 56px rgba(11, 29, 70, .08);
+      --brand-dark: #143267;
+      --brand-grad: linear-gradient(to right, #143267, #1d4fba);
+      --navy: #1a345a;
+      --shadow-lg: 0 32px 100px rgba(20, 50, 103, .11);
+      --shadow-md: 0 20px 56px rgba(20, 50, 103, .08);
     }
 
     * {
@@ -82,7 +82,7 @@
     .btn-dark:hover {
       filter: brightness(1.1);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(11, 29, 70, .2);
+      box-shadow: 0 10px 20px rgba(20, 50, 103, .2);
     }
 
     .panel {
@@ -133,13 +133,15 @@
       font-weight: 800;
       letter-spacing: -.03em;
       color: #f8fafc;
+      gap: 12px;
     }
 
     .brand-sub {
       margin-top: 4px;
-      font-size: 13px;
+      font-size: 20px;
       color: #dbe4f1;
-      font-weight: 600;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
 
     .nav {
@@ -149,8 +151,8 @@
     }
 
     .nav a {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 700;
       color: #e2e8f0;
       transition: color .25s ease;
     }
@@ -180,6 +182,21 @@
       background: rgba(255, 255, 255, .22);
     }
 
+    .header-consult-btn {
+      background: #1d4fba !important;
+      border: none !important;
+      color: #ffffff !important;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(29, 79, 186, .32);
+    }
+
+    .header-consult-btn:hover {
+      filter: brightness(1.08) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(29, 79, 186, .42);
+    }
+
     .header.scrolled .brand-title {
       color: #0f172a;
     }
@@ -202,12 +219,18 @@
       color: #ffffff;
     }
 
+    .header.scrolled .header-consult-btn {
+      background: #1d4fba !important;
+      border: none !important;
+      color: #ffffff !important;
+    }
+
     .hero-visual {
       position: relative;
       overflow: hidden;
       border-radius: 40px;
       min-height: clamp(380px, 58vh, 620px);
-      box-shadow: 0 36px 90px rgba(11, 29, 70, .24);
+      box-shadow: 0 36px 90px rgba(20, 50, 103, .24);
       isolation: isolate;
     }
 
@@ -216,8 +239,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(112deg, rgba(7, 17, 39, .82) 0%, rgba(8, 28, 74, .62) 46%, rgba(13, 66, 160, .22) 100%),
-        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2600&auto=format&fit=crop') center/cover no-repeat;
+        linear-gradient(112deg, rgba(7, 17, 39, .62) 0%, rgba(8, 28, 74, .45) 46%, rgba(13, 66, 160, .16) 100%),
+        url('https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?cs=srgb&dl=pexels-pavel-danilyuk-8112180.jpg&fm=jpg') center/cover no-repeat;
       transform: scale(1.04);
       z-index: -2;
     }
@@ -249,7 +272,7 @@
       width: auto;
       aspect-ratio: auto;
       border-radius: 0;
-      background: linear-gradient(180deg, rgba(7, 17, 39, .14) 0%, rgba(7, 17, 39, .44) 52%, rgba(7, 17, 39, .82) 100%);
+      background: linear-gradient(180deg, rgba(7, 17, 39, .08) 0%, rgba(7, 17, 39, .30) 52%, rgba(7, 17, 39, .68) 100%);
     }
 
     .hero-full .hero-copy {
@@ -383,21 +406,36 @@
     .service-list-v {
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      margin-top: 10px;
+      gap: 22px;
+      margin-top: 12px;
       flex: 1;
       justify-content: center;
     }
 
     .service-item-v {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 850;
       color: #143768;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 16px;
       line-height: 1.2;
+    }
+
+    .service-item-v .num {
+      font-size: 40px;
+      color: #1d4fba;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .service-item-v .txt {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f274f;
     }
 
     .divider-grad {
@@ -421,7 +459,7 @@
       font-weight: 800;
       font-size: 16px;
       transition: .24s ease;
-      box-shadow: 0 12px 28px rgba(11, 29, 70, .2);
+      box-shadow: 0 12px 28px rgba(20, 50, 103, .2);
       padding: 0 16px;
     }
 
@@ -436,6 +474,19 @@
       width: 18px;
       height: 18px;
       flex-shrink: 0;
+    }
+
+    .naver-action {
+      background: #03c75a !important;
+      border: 1px solid #02aa4f !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(3, 199, 90, .35) !important;
+    }
+
+    .naver-action:hover {
+      border-color: #029a48 !important;
+      box-shadow: 0 18px 34px rgba(3, 199, 90, .4) !important;
+      filter: brightness(1.04);
     }
 
     .service-action.disabled {
@@ -463,7 +514,7 @@
       padding: 22px 56px;
       background: var(--brand-grad);
       border-radius: 9999px;
-      box-shadow: 0 24px 48px rgba(11, 29, 70, 0.25);
+      box-shadow: 0 24px 48px rgba(20, 50, 103, 0.25);
       transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
       border: 1px solid rgba(255, 255, 255, 0.15);
       cursor: pointer;
@@ -509,6 +560,8 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
+      text-align: center;
+      width: 100%;
     }
 
     .consult-mini-label {
@@ -597,6 +650,32 @@
       letter-spacing: -0.02em;
     }
 
+    #detail-corp .panel>div:first-child,
+    #detail-realestate .panel-soft>div:first-child,
+    #detail-civil .panel>div:first-child {
+      display: none;
+    }
+
+    #detail-corp .panel,
+    #detail-realestate .panel-soft,
+    #detail-civil .panel {
+      padding: 32px 28px !important;
+    }
+
+    #detail-corp h4,
+    #detail-realestate h4,
+    #detail-civil h4 {
+      font-size: 24px !important;
+      margin-bottom: 8px !important;
+    }
+
+    #detail-corp p,
+    #detail-realestate p,
+    #detail-civil p {
+      font-size: 18px !important;
+      line-height: 1.7 !important;
+    }
+
     @media (max-width: 767px) {
       .experts-visual-container {
         border-radius: 24px;
@@ -607,14 +686,18 @@
         bottom: 0;
         left: 0 !important;
         right: 0 !important;
-        margin: -20px 20px 20px;
+        margin: 12px 14px 0;
         text-align: center;
-        padding: 20px;
+        padding: 18px;
+      }
+
+      .glass-profile+.glass-profile {
+        margin-top: 10px;
       }
     }
 
     .footer {
-      background: #08101d;
+      background: #162f56;
       color: #cbd5e1;
       border-top: 1px solid rgba(255, 255, 255, .08);
     }
@@ -630,6 +713,10 @@
         flex-direction: column;
         gap: 14px;
         padding: 16px 0;
+      }
+
+      .brand-sub {
+        font-size: 18px;
       }
 
       .nav {
@@ -666,6 +753,40 @@
         font-size: 21px;
       }
 
+      .service-main-card .service-action {
+        margin-top: 24px !important;
+      }
+
+      .service-links-grid {
+        grid-auto-rows: auto !important;
+      }
+
+      .service-mini-card {
+        padding: 18px !important;
+        min-height: 0 !important;
+        height: auto !important;
+        justify-content: space-between;
+      }
+
+      .service-mini-card .service-card-top {
+        margin-bottom: 4px;
+      }
+
+      .service-mini-card .service-mini-title {
+        min-height: 2.6em;
+        margin-top: 8px;
+        font-size: 19px;
+        line-height: 1.28;
+      }
+
+      .service-mini-card .service-action {
+        min-height: 50px;
+        margin-top: 12px !important;
+        border-radius: 14px;
+        font-size: 14px;
+        padding: 0 12px;
+      }
+
       .service-tag {
         min-height: 60px;
         font-size: 20px;
@@ -698,7 +819,11 @@
       }
 
       .consult-mini-number {
-        font-size: 26px;
+        font-size: 32px;
+      }
+
+      .consult-mini-label {
+        font-size: 15px;
       }
 
       .panel,
@@ -717,18 +842,17 @@
       <div>
         <div class="brand-title flex items-center gap-2">
           <img src="logo.png" alt="법무사 김현수 사무소 로고" class="w-7 h-7 object-contain" />
-          법무사 김현수 사무소
+          <span>TEL 02-430-0980</span>
         </div>
-        <div class="brand-sub">김현수 법무사 | TEL 02-430-0980</div>
       </div>
       <nav class="nav">
-        <a href="#hero">처음으로</a>
+        <a href="#hero">메인</a>
         <a href="#services">업무영역</a>
         <a href="#experts">전문가 소개</a>
-        <a href="#support">무료지원</a>
+        <a href="#support">고객 지원</a>
         <a href="#contact">오시는 길</a>
       </nav>
-      <a href="#contact" class="btn-dark h-12 px-7 text-[15px]">무료상담신청</a>
+      <a href="#contact" class="btn-dark header-consult-btn h-14 px-9 text-[18px]">무료상담신청</a>
     </div>
   </header>
 
@@ -738,8 +862,8 @@
     <section id="hero" class="pt-0 pb-0">
       <div class="hero-visual hero-full">
         <div class="container hero-copy">
-          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4">LAW OFFICE KIM HYUNSU</div>
-          <h1 class="hero-slogan">신뢰를 등록하고, 분쟁을 정리합니다.</h1>
+          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4">LAW OFFICE KIMHYUNSOO</div>
+          <h1 class="hero-slogan">신뢰를 결과로 증명합니다.</h1>
         </div>
       </div>
     </section>
@@ -751,15 +875,15 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 min-h-[560px]">
           <div class="lg:col-span-5 panel overflow-hidden flex flex-col bg-white">
             <div class="relative flex-1 min-h-[400px]">
-              <img src="4) 사진 1.jpg" alt="법무사 김현수 사무소" class="absolute inset-0 w-full h-full object-cover">
+              <img src="photo-1.jpg" alt="법무사 김현수 사무소" class="absolute inset-0 w-full h-full object-cover">
             </div>
-            <div class="py-7 px-10 bg-gradient-to-r from-[#0b1d46] to-[#1d4fba] flex items-center justify-center">
-              <span class="text-[26px] font-black text-white tracking-tight">대표법무사 <span
+            <div class="py-7 px-10 bg-gradient-to-r from-[#143267] to-[#1d4fba] flex items-center justify-center">
+              <span class="text-[34px] font-black text-white tracking-tight">대표법무사 <span
                   class="opacity-90">김현수</span></span>
             </div>
           </div>
 
-          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-7 auto-rows-fr">
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-7 auto-rows-fr service-links-grid">
 
             <article
               class="panel service-link-card service-main-card sm:row-span-2 hover:-translate-y-1.5 transition duration-300">
@@ -768,14 +892,15 @@
               </div>
 
               <div class="service-list-v">
-                <div class="service-item-v">법인등기</div>
+                <div class="service-item-v"><span class="num">01</span><span class="txt">법인등기</span></div>
                 <div class="divider-grad"></div>
-                <div class="service-item-v">부동산등기</div>
+                <div class="service-item-v"><span class="num">02</span><span class="txt">부동산등기</span></div>
                 <div class="divider-grad"></div>
-                <div class="service-item-v">민사분쟁</div>
+                <div class="service-item-v"><span class="num">03</span><span class="txt">민사분쟁</span></div>
               </div>
 
-              <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener" class="service-action mt-auto">
+              <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener"
+                class="service-action naver-action mt-auto">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z" />
                 </svg>
@@ -805,7 +930,7 @@
               </div>
               <h3 class="service-mini-title">개인회생 블로그</h3>
               <a href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener"
-                class="service-action mt-6 sm:mt-auto">
+                class="service-action naver-action mt-6 sm:mt-auto">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z" />
                 </svg>
@@ -819,7 +944,8 @@
         <section class="consult-mini" aria-label="상담 전화 안내">
           <a href="tel:02-430-0980" class="consult-mini-inner">
             <div class="consult-mini-content">
-              <span class="consult-mini-number">무료전화상담 02-430-0980</span>
+              <span class="consult-mini-label">무료전화상담</span>
+              <span class="consult-mini-number">02-430-0980</span>
             </div>
           </a>
         </section>
@@ -830,7 +956,7 @@
     <!-- ===== SERVICES ===== -->
     <section id="services" class="bg-white pb-28">
       <div
-        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#0b1d46] to-[#1d4fba]">
+        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#143267] to-[#1d4fba]">
         <div class="relative z-10 container flex flex-col items-center">
           <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4 opacity-80">Core Services</div>
           <h2 class="section-title text-white">주요 업무 분야</h2>
@@ -843,27 +969,27 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           <a href="#detail-corp"
             class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div
-              class="w-14 h-14 bg-white border border-blue-100 shadow-sm rounded-2xl flex items-center justify-center text-2xl font-black text-blue-700 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-              01</div>
-            <h3 class="text-[24px] font-bold mb-4 tracking-tight">법인등기</h3>
-            <p class="text-slate-500 leading-[1.8] text-[17px]">법인 설립, 변경, 임원, 본점 이전, 증자 등 법인 운영에 필요한 전반적인 등기 절차</p>
+            <div class="flex items-baseline gap-4 mb-5">
+              <span class="text-[44px] leading-none font-black text-blue-700">01</span>
+              <h3 class="text-[33px] font-black tracking-tight text-slate-800">법인등기</h3>
+            </div>
+            <p class="text-slate-600 leading-[1.8] text-[19px]">법인설립, 임원변경, 본점이전, 전환사채, 증자, 감자, 회사계속</p>
           </a>
           <a href="#detail-realestate"
             class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div
-              class="w-14 h-14 bg-white border border-blue-100 shadow-sm rounded-2xl flex items-center justify-center text-2xl font-black text-blue-700 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-              02</div>
-            <h3 class="text-[24px] font-bold mb-4 tracking-tight">부동산등기</h3>
-            <p class="text-slate-500 leading-[1.8] text-[17px]">상속, 증여, 매매 등 다양한 원인으로 인한 부동산 소유권 이전 및 설정 등기</p>
+            <div class="flex items-baseline gap-4 mb-5">
+              <span class="text-[44px] leading-none font-black text-blue-700">02</span>
+              <h3 class="text-[33px] font-black tracking-tight text-slate-800">부동산등기</h3>
+            </div>
+            <p class="text-slate-600 leading-[1.8] text-[19px]">상속, 증여, 매매 등 다양한 원인으로 인한 부동산 소유권 이전 및 설정 등기</p>
           </a>
           <a href="#detail-civil"
             class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div
-              class="w-14 h-14 bg-white border border-blue-100 shadow-sm rounded-2xl flex items-center justify-center text-2xl font-black text-blue-700 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-              03</div>
-            <h3 class="text-[24px] font-bold mb-4 tracking-tight">민사분쟁</h3>
-            <p class="text-slate-500 leading-[1.8] text-[17px]">지급명령, 소액사건, 경매 등 채권 확보 및 분쟁 해결을 위한 실무적 법적 대응</p>
+            <div class="flex items-baseline gap-4 mb-5">
+              <span class="text-[44px] leading-none font-black text-blue-700">03</span>
+              <h3 class="text-[33px] font-black tracking-tight text-slate-800">민사분쟁</h3>
+            </div>
+            <p class="text-slate-600 leading-[1.8] text-[19px]">지급명령, 소액사건, 경매 등 채권 확보 및 분쟁 해결을 위한 실무적 법적 대응</p>
           </a>
         </div>
 
@@ -878,7 +1004,7 @@
                 class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
                 🏢</div>
               <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">법인설립</h4>
-              <p class="text-[15px] text-slate-500 font-medium">주식회사, 유한회사, 노무법인, 특수법인</p>
+              <p class="text-[15px] text-slate-500 font-medium">주식회사, 유한회사, 노무법인,<br>특수법인</p>
             </div>
             <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
               <div
@@ -907,7 +1033,7 @@
                 class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
                 📈</div>
               <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">증자</h4>
-              <p class="text-[15px] text-slate-500 font-medium">유상·무상증자, 가수금, 상환전환우선주</p>
+              <p class="text-[15px] text-slate-500 font-medium">유상·무상증자, 가수금,<br>상환전환우선주</p>
             </div>
             <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
               <div
@@ -1020,7 +1146,7 @@
                 class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
                 🔨</div>
               <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">경매</h4>
-              <p class="text-[15px] text-slate-500 font-medium">강제, 이의</p>
+              <p class="text-[15px] text-slate-500 font-medium">강제, 임의</p>
             </div>
             <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
               <div
@@ -1050,16 +1176,16 @@
     </section>
 
     <!-- ===== EXPERTS HEADER ===== -->
-    <section id="experts" class="bg-[#0b1320] py-32">
+    <section id="experts" class="bg-[#1a345a] py-32">
       <div class="relative flex items-center justify-center text-center overflow-hidden">
         <div
           class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center bg-fixed transform scale-105 opacity-20">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0b1320]/90 to-[#0b1320]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1a345a]/90 to-[#1a345a]"></div>
         <div class="relative z-10 container flex flex-col items-center">
           <div class="eyebrow text-blue-400 tracking-[0.2em] mb-4">Experts</div>
           <h2 class="section-title text-white">전문가 소개</h2>
-          <p class="mt-4 text-[17px] text-slate-400 font-medium leading-relaxed">풍부한 경험을 갖춘 김현수 법무사 사무소의 핵심 인력을 소개합니다.
+          <p class="mt-4 text-[17px] text-slate-400 font-medium leading-relaxed">풍부한 경험을 갖춘 법무사 김현수 사무소의 핵심 인력을 소개합니다.
           </p>
         </div>
       </div>
@@ -1069,16 +1195,16 @@
     <section class="bg-white py-32">
       <div class="container relative z-20">
         <div class="experts-visual-container">
-          <img src="5) 사진 2.jpg" alt="전문가 장재혁 본부장, 김현수 법무사" class="experts-portrait">
+          <img src="photo-2.jpg" alt="법무사 김현수, 사무장 장재혁" class="experts-portrait">
 
           <div class="glass-profile left">
-            <div class="label">Operations Director</div>
-            <div class="name">본부장 장재혁</div>
+            <div class="label">Judicial Scrivener</div>
+            <div class="name">법무사 김현수</div>
           </div>
 
           <div class="glass-profile right">
-            <div class="label">Judicial Scrivener</div>
-            <div class="name">법무사 김현수</div>
+            <div class="label">Office Manager</div>
+            <div class="name">사무장 장재혁</div>
           </div>
         </div>
       </div>
@@ -1087,10 +1213,10 @@
     <!-- ===== FREE SUPPORT ===== -->
     <section id="support" class="bg-slate-50 pb-28">
       <div
-        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#0b1d46] to-[#1d4fba]">
+        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#143267] to-[#1d4fba]">
         <div class="relative z-10 container flex flex-col items-center">
-          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4 opacity-80">Free Support</div>
-          <h2 class="section-title text-white">법인설립 무료지원 서비스</h2>
+          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4 opacity-80">Customer Support</div>
+          <h2 class="section-title text-white">법인설립 고객지원</h2>
           <p class="mt-5 text-[17px] text-blue-100/80 font-medium">안정적인 시작을 위한 다양한 혜택을 지원합니다.</p>
         </div>
       </div>
@@ -1134,7 +1260,7 @@
         <div
           class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center bg-fixed transform scale-105">
         </div>
-        <div class="absolute inset-0 bg-slate-900/85"></div>
+        <div class="absolute inset-0 bg-slate-900/65"></div>
         <div class="relative z-10 container flex flex-col items-center">
           <div class="eyebrow text-blue-400 tracking-[0.2em] mb-4">Contact Us</div>
           <h2 class="section-title text-white">오시는 길 및 상담신청</h2>
@@ -1151,12 +1277,12 @@
               <h3 class="text-[28px] font-extrabold mb-7 tracking-tight">오시는 길</h3>
               <div
                 class="w-full h-64 sm:h-72 bg-slate-100 border border-slate-200 shadow-inner rounded-[24px] mb-8 overflow-hidden">
-                <iframe src="https://www.google.com/maps?q=서울+송파구+법원로길+13+문정역테라타워2&output=embed" loading="lazy"
+                <iframe src="https://www.google.com/maps?q=서울특별시+송파구+법원로8길+13+문정헤리움써밋타워&output=embed" loading="lazy"
                   class="w-full h-full border-0"></iframe>
               </div>
               <p class="font-extrabold text-slate-700 text-[18px] leading-[1.7] mb-8">
-                서울 송파구 법원로8길 13<br>
-                문정역테라타워2 B동 1213호
+                서울특별시 송파구 법원로8길 13, 12층 1213호<br>
+                (문정동, 문정헤리움써밋타워)
               </p>
             </div>
 
@@ -1192,6 +1318,12 @@
                     class="w-full bg-white border border-slate-200 rounded-2xl px-5 py-5 h-36 resize-none outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm font-medium text-[16px]"
                     placeholder="궁금하신 내용을 간단히 남겨주시면 확인 후 바로 연락드리겠습니다."></textarea>
                 </div>
+
+                <label class="flex items-center gap-3 px-1 cursor-pointer">
+                  <input type="checkbox" name="privacy_agree" required
+                    class="w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-200">
+                  <span class="text-[15px] font-semibold text-slate-700">개인정보 수집에 동의합니다.</span>
+                </label>
               </div>
 
               <button type="submit"
@@ -1216,7 +1348,7 @@
           <p class="text-slate-400 leading-[1.95] text-[15px]">
             대표자 : 김현수 법무사<br>
             사업자등록번호 : 722-06-02376<br>
-            주소 : 서울 송파구 법원로8길 13, 12층 1213호 (문정동, 문정헤리움써밋타워)
+            주소 : 서울특별시 송파구 법원로8길 13, 12층 1213호 (문정동, 문정헤리움써밋타워)
           </p>
         </div>
         <div class="flex flex-col lg:items-end lg:text-right">
