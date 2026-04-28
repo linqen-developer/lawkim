@@ -709,10 +709,35 @@
     }
 
     @media (max-width: 767px) {
+      .header .container {
+        width: min(1280px, calc(100% - 96px));
+      }
+
       .header-inner {
-        flex-direction: column;
-        gap: 14px;
-        padding: 16px 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 13px 0;
+      }
+
+      .brand-title {
+        font-size: 17px;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .brand-title img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .header-consult-btn {
+        height: 46px !important;
+        padding: 0 16px !important;
+        font-size: 15px !important;
+        border-radius: 11px !important;
+        flex-shrink: 0;
       }
 
       .brand-sub {
