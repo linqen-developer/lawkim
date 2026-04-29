@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>법무사 김현수 사무소 | 법인등기 · 부동산등기 · 민사분쟁</title>
+  <link rel="icon" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap');
@@ -21,6 +22,7 @@
       --navy: #1a345a;
       --shadow-lg: 0 32px 100px rgba(20, 50, 103, .11);
       --shadow-md: 0 20px 56px rgba(20, 50, 103, .08);
+      --line: #d7e2f2;
     }
 
     * {
@@ -58,10 +60,10 @@
     }
 
     .section-title {
-      font-size: clamp(34px, 4vw, 56px);
-      line-height: 1.12;
-      font-weight: 800;
-      letter-spacing: -.04em;
+      font-size: 52px;
+      line-height: 1.14;
+      font-weight: 900;
+      letter-spacing: 0;
       word-break: keep-all;
     }
 
@@ -88,16 +90,16 @@
     .panel {
       background: rgba(255, 255, 255, .98);
       border: 1px solid rgba(214, 225, 240, .95);
-      border-radius: 34px;
-      box-shadow: var(--shadow-lg);
+      border-radius: 24px;
+      box-shadow: 0 20px 54px rgba(20, 50, 103, .10);
       transition: .3s ease;
     }
 
     .panel-soft {
       background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
       border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: var(--shadow-md);
+      border-radius: 22px;
+      box-shadow: 0 18px 44px rgba(20, 50, 103, .08);
       transition: .3s ease;
     }
 
@@ -239,8 +241,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(112deg, rgba(7, 17, 39, .62) 0%, rgba(8, 28, 74, .45) 46%, rgba(13, 66, 160, .16) 100%),
-        url('https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?cs=srgb&dl=pexels-pavel-danilyuk-8112180.jpg&fm=jpg') center/cover no-repeat;
+        linear-gradient(112deg, rgba(9, 24, 48, .72) 0%, rgba(13, 37, 76, .48) 46%, rgba(29, 79, 186, .14) 100%),
+        url('hero-handshake.jpg') center/cover no-repeat;
       transform: scale(1.04);
       z-index: -2;
     }
@@ -258,7 +260,7 @@
     }
 
     .hero-full {
-      min-height: 100svh;
+      min-height: 92svh;
       border-radius: 0;
       box-shadow: none;
     }
@@ -272,11 +274,11 @@
       width: auto;
       aspect-ratio: auto;
       border-radius: 0;
-      background: linear-gradient(180deg, rgba(7, 17, 39, .08) 0%, rgba(7, 17, 39, .30) 52%, rgba(7, 17, 39, .68) 100%);
+      background: linear-gradient(180deg, rgba(8, 20, 40, .08) 0%, rgba(8, 20, 40, .26) 48%, rgba(8, 20, 40, .78) 100%);
     }
 
     .hero-full .hero-copy {
-      min-height: 100svh;
+      min-height: 92svh;
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -293,23 +295,24 @@
 
     .hero-slogan {
       margin: 0;
-      max-width: 720px;
-      font-size: clamp(32px, 5.2vw, 72px);
-      line-height: 1.04;
+      max-width: 880px;
+      font-size: 64px;
+      line-height: 1.08;
       font-weight: 900;
-      letter-spacing: -.038em;
+      letter-spacing: 0;
       word-break: keep-all;
       text-wrap: balance;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, .32);
     }
 
     .service-link-card {
-      padding: 32px;
+      padding: 34px;
       display: flex;
       flex-direction: column;
       min-height: 100%;
       border: 1px solid #c7d6ef;
       background: #ffffff;
-      box-shadow: 0 18px 42px rgba(18, 52, 122, .14);
+      box-shadow: 0 18px 46px rgba(18, 52, 122, .12);
       text-align: center;
     }
 
@@ -343,7 +346,7 @@
     .service-card-label {
       color: #1d4fba;
       font-size: 12px;
-      letter-spacing: .14em;
+      letter-spacing: 0;
       font-weight: 800;
       text-align: center;
     }
@@ -352,7 +355,7 @@
       margin-top: 8px;
       font-size: 30px;
       line-height: 1.12;
-      letter-spacing: -.02em;
+      letter-spacing: 0;
       font-weight: 900;
       color: #0f274f;
       text-align: center;
@@ -362,7 +365,7 @@
       margin-top: 12px;
       font-size: 24px;
       line-height: 1.2;
-      letter-spacing: -.02em;
+      letter-spacing: 0;
       font-weight: 850;
       color: #0f274f;
       text-align: center;
@@ -416,7 +419,7 @@
       font-size: 30px;
       font-weight: 850;
       color: #143768;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -434,7 +437,7 @@
     .service-item-v .txt {
       font-size: 34px;
       font-weight: 900;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: #0f274f;
     }
 
@@ -575,7 +578,7 @@
       font-size: clamp(24px, 3.5vw, 32px);
       color: #ffffff;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       line-height: 1;
     }
 
@@ -590,7 +593,7 @@
       position: relative;
       max-width: 780px;
       margin: 0 auto;
-      border-radius: 40px;
+      border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
       background: #f8fafc;
@@ -614,7 +617,7 @@
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.4);
       padding: 24px 34px;
-      border-radius: 28px;
+      border-radius: 18px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
       transition: all 0.4s ease;
       z-index: 10;
@@ -639,7 +642,7 @@
       font-weight: 800;
       color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0;
       margin-bottom: 4px;
     }
 
@@ -647,7 +650,11 @@
       font-size: 28px;
       font-weight: 900;
       color: var(--navy);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
+    }
+
+    body * {
+      letter-spacing: 0 !important;
     }
 
     #detail-corp .panel>div:first-child,
@@ -710,38 +717,53 @@
 
     @media (max-width: 767px) {
       .header .container {
-        width: min(1280px, calc(100% - 96px));
+        width: min(360px, calc(100% - 28px));
       }
 
       .header-inner {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        padding: 13px 0;
+        gap: 12px;
+        padding: 12px 0;
       }
 
       .brand-title {
-        font-size: 17px;
-        gap: 8px;
+        font-size: 14px;
+        gap: 7px;
         white-space: nowrap;
+        line-height: 1;
+        color: #ffffff;
+      }
+
+      .header.scrolled .brand-title {
+        color: var(--brand-dark);
       }
 
       .brand-title img {
-        width: 24px;
-        height: 24px;
+        width: 21px;
+        height: 21px;
       }
 
       .header-consult-btn {
-        height: 46px !important;
-        padding: 0 16px !important;
-        font-size: 15px !important;
-        border-radius: 11px !important;
+        height: 42px !important;
+        padding: 0 12px !important;
+        font-size: 14px !important;
+        border-radius: 12px !important;
         flex-shrink: 0;
+        box-shadow: 0 10px 22px rgba(29, 79, 186, .38);
       }
 
       .brand-sub {
-        font-size: 18px;
+        margin-top: 5px;
+        padding-left: 28px;
+        font-size: 15px;
+        line-height: 1;
+        color: #ffffff;
+      }
+
+      .header.scrolled .brand-sub {
+        color: var(--brand-dark);
       }
 
       .nav {
@@ -753,7 +775,8 @@
       }
 
       .section-title {
-        font-size: 28px;
+        font-size: 34px;
+        line-height: 1.16;
       }
 
       .hero-visual,
@@ -763,11 +786,26 @@
 
       .hero-full,
       .hero-full .hero-copy {
-        min-height: 88svh;
+        min-height: 78svh;
       }
 
       .hero-copy {
-        padding: 28px;
+        padding: 94px 24px 56px;
+      }
+
+      .hero-visual::before {
+        background-position: center center;
+      }
+
+      .hero-slogan {
+        max-width: 320px;
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      .hero-copy .eyebrow {
+        font-size: 12px;
+        line-height: 1.4;
       }
 
       .service-card-title {
@@ -819,11 +857,12 @@
       }
 
       .service-link-card {
-        padding: 24px;
+        padding: 22px;
       }
 
       .service-action {
-        font-size: 15px;
+        min-height: 54px;
+        font-size: 16px;
       }
 
       .consult-mini-inner {
@@ -853,7 +892,7 @@
 
       .panel,
       .panel-soft {
-        border-radius: 24px;
+        border-radius: 18px;
       }
     }
   </style>
@@ -867,8 +906,9 @@
       <div>
         <div class="brand-title flex items-center gap-2">
           <img src="logo.png" alt="법무사 김현수 사무소 로고" class="w-7 h-7 object-contain" />
-          <span>TEL 02-430-0980</span>
+          <span>법무사 김현수 사무소</span>
         </div>
+        <div class="brand-sub">TEL 02-430-0980</div>
       </div>
       <nav class="nav">
         <a href="#hero">메인</a>
