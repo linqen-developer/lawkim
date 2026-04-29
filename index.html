@@ -4,1485 +4,2832 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="법무사 김현수 사무소 - 법인등기, 부동산등기, 민사분쟁 상담 및 실무 안내" />
   <title>법무사 김현수 사무소 | 법인등기 · 부동산등기 · 민사분쟁</title>
   <link rel="icon" href="logo.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap');
-
     :root {
-      --bg: #edf2fb;
-      --surface: #ffffff;
-      --surface-soft: #f4f8ff;
-      --ink: #0f172a;
-      --muted: #475569;
-      --brand: #1d4fba;
-      --brand-dark: #143267;
-      --brand-grad: linear-gradient(to right, #143267, #1d4fba);
-      --navy: #1a345a;
-      --shadow-lg: 0 32px 100px rgba(20, 50, 103, .11);
-      --shadow-md: 0 20px 56px rgba(20, 50, 103, .08);
-      --line: #d7e2f2;
+      --classic-blue: #0f4c81;
+      --classic-blue-2: #123f6b;
+      --blue-deep: #082f57;
+      --blue-ink: #071f3a;
+      --charcoal: #242a31;
+      --ink: #17212c;
+      --muted: #64707d;
+      --paper: #fbf8f2;
+      --ivory: #f4efe6;
+      --white: #ffffff;
+      --line: rgba(15, 76, 129, .18);
+      --gold: #b99659;
+      --gold-soft: #d8bf8d;
+      --shadow: 0 28px 70px rgba(8, 47, 87, .13);
+      --focus: 0 0 0 4px rgba(15, 76, 129, .22);
     }
 
     * {
       box-sizing: border-box;
+      letter-spacing: 0;
     }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 88px;
     }
 
     body {
       margin: 0;
-      font-family: Pretendard, system-ui, sans-serif;
-      background: var(--bg);
       color: var(--ink);
+      background: var(--paper);
+      font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+      line-height: 1.7;
+      word-break: keep-all;
       -webkit-font-smoothing: antialiased;
     }
 
+    body::selection {
+      background: rgba(15, 76, 129, .2);
+    }
+
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
     }
 
     .container {
-      width: min(1280px, calc(100% - 48px));
+      width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    .eyebrow {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-size: 52px;
-      line-height: 1.14;
-      font-weight: 900;
-      letter-spacing: 0;
-      word-break: keep-all;
-    }
-
-    .btn-dark {
-      background: var(--brand-grad);
-      color: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      font-weight: 700;
-      transition: all .25s ease;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-dark:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(20, 50, 103, .2);
-    }
-
-    .panel {
-      background: rgba(255, 255, 255, .98);
-      border: 1px solid rgba(214, 225, 240, .95);
-      border-radius: 24px;
-      box-shadow: 0 20px 54px rgba(20, 50, 103, .10);
-      transition: .3s ease;
-    }
-
-    .panel-soft {
-      background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 18px 44px rgba(20, 50, 103, .08);
-      transition: .3s ease;
-    }
-
-    .section {
-      position: relative;
-      padding: 120px 0;
-    }
-
-    .section.soft {
-      background: linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
-    }
-
-    .header {
+    .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 60;
-      transition: all .25s ease;
-      border-bottom: 1px solid transparent;
+      inset: 0 0 auto;
+      z-index: 50;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .site-header.is-scrolled {
+      color: var(--ink);
+      background: rgba(251, 248, 242, .96);
+      border-color: var(--line);
+      box-shadow: 0 14px 34px rgba(8, 47, 87, .08);
+      backdrop-filter: blur(14px);
     }
 
     .header-inner {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 0;
-      transition: padding .25s ease;
+      gap: 26px;
     }
 
-    .brand-title {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -.03em;
-      color: #f8fafc;
+    .brand {
+      display: inline-flex;
+      align-items: center;
       gap: 12px;
+      min-width: max-content;
     }
 
-    .brand-sub {
-      margin-top: 4px;
-      font-size: 20px;
-      color: #dbe4f1;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      padding: 3px;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(255, 255, 255, .45);
+      object-fit: contain;
+    }
+
+    .brand-name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.28;
+    }
+
+    .brand-tel {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, .72);
+      font-size: .78rem;
+      font-weight: 700;
+      transition: color .25s ease;
+    }
+
+    .site-header.is-scrolled .brand-tel {
+      color: var(--muted);
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 27px;
+      color: rgba(255, 255, 255, .82);
+      font-size: .94rem;
+      font-weight: 800;
+    }
+
+    .site-header.is-scrolled .nav {
+      color: #344150;
     }
 
     .nav a {
-      font-size: 18px;
-      font-weight: 700;
-      color: #e2e8f0;
-      transition: color .25s ease;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      position: relative;
     }
 
-    .nav a:hover {
-      color: #ffffff;
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 7px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      opacity: .7;
+      transition: transform .2s ease;
     }
 
-    .header.scrolled {
-      border-bottom: 1px solid rgba(226, 232, 240, .8);
-      background: rgba(255, 255, 255, .95);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, .04);
+    .nav a:hover::after {
+      transform: scaleX(1);
     }
 
-    .header.scrolled .header-inner {
-      padding: 14px 0;
-    }
-
-    .header .btn-dark {
-      background: rgba(255, 255, 255, .12);
-      border: 1px solid rgba(255, 255, 255, .36);
-      backdrop-filter: blur(8px);
-    }
-
-    .header .btn-dark:hover {
-      background: rgba(255, 255, 255, .22);
-    }
-
-    .header-consult-btn {
-      background: #1d4fba !important;
-      border: none !important;
-      color: #ffffff !important;
-      font-size: 18px;
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      padding: 0 20px;
       font-weight: 900;
-      box-shadow: 0 14px 28px rgba(29, 79, 186, .32);
+      line-height: 1;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      cursor: pointer;
     }
 
-    .header-consult-btn:hover {
-      filter: brightness(1.08) !important;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(29, 79, 186, .42);
+    .btn::after {
+      content: "→";
+      transform: translateY(-1px);
     }
 
-    .header.scrolled .brand-title {
-      color: #0f172a;
+    .btn-primary {
+      color: #101820;
+      background: var(--gold);
+      border-color: rgba(255, 255, 255, .18);
     }
 
-    .header.scrolled .brand-sub {
-      color: #64748b;
+    .btn-primary:hover {
+      background: #c6a366;
+      transform: translateY(-1px);
     }
 
-    .header.scrolled .nav a {
-      color: #475569;
+    .btn-blue {
+      color: var(--white);
+      background: var(--classic-blue);
+      border-color: var(--classic-blue);
     }
 
-    .header.scrolled .nav a:hover {
-      color: #0f172a;
+    .btn-blue:hover {
+      background: var(--classic-blue-2);
+      border-color: var(--classic-blue-2);
+      transform: translateY(-1px);
     }
 
-    .header.scrolled .btn-dark {
-      background: var(--navy);
-      border-color: transparent;
-      color: #ffffff;
+    .btn-outline {
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .34);
     }
 
-    .header.scrolled .header-consult-btn {
-      background: #1d4fba !important;
-      border: none !important;
-      color: #ffffff !important;
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, .14);
     }
 
-    .hero-visual {
+    .site-header.is-scrolled .btn-outline {
+      color: var(--classic-blue);
+      border-color: rgba(15, 76, 129, .28);
+      background: rgba(15, 76, 129, .05);
+    }
+
+    .hero {
+      min-height: 92svh;
+      color: var(--white);
+      background-image:
+        linear-gradient(90deg, rgba(7, 31, 58, .94) 0%, rgba(15, 76, 129, .78) 46%, rgba(15, 76, 129, .36) 100%),
+        linear-gradient(180deg, rgba(7, 31, 58, .08) 0%, rgba(7, 31, 58, .74) 100%),
+        url("hero-handshake.jpg");
+      background-size: cover;
+      background-position: center;
       position: relative;
       overflow: hidden;
-      border-radius: 40px;
-      min-height: clamp(380px, 58vh, 620px);
-      box-shadow: 0 36px 90px rgba(20, 50, 103, .24);
       isolation: isolate;
     }
 
-    .hero-visual::before {
+    .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(112deg, rgba(9, 24, 48, .72) 0%, rgba(13, 37, 76, .48) 46%, rgba(29, 79, 186, .14) 100%),
-        url('hero-handshake.jpg') center/cover no-repeat;
-      transform: scale(1.04);
-      z-index: -2;
-    }
-
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: -30% auto auto -24%;
-      width: 58%;
-      aspect-ratio: 1;
-      border-radius: 9999px;
-      background: radial-gradient(circle, rgba(76, 130, 255, .34) 0%, rgba(76, 130, 255, 0) 72%);
       z-index: -1;
-      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .038) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(90deg, black 0%, transparent 86%);
     }
 
-    .hero-full {
+    .hero-inner {
       min-height: 92svh;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .hero-full::before {
-      transform: scale(1.03);
-    }
-
-    .hero-full::after {
-      inset: 0;
-      width: auto;
-      aspect-ratio: auto;
-      border-radius: 0;
-      background: linear-gradient(180deg, rgba(8, 20, 40, .08) 0%, rgba(8, 20, 40, .26) 48%, rgba(8, 20, 40, .78) 100%);
-    }
-
-    .hero-full .hero-copy {
-      min-height: 92svh;
-      justify-content: center;
+      display: flex;
       align-items: center;
-      text-align: center;
+      padding: 116px 0 92px;
     }
 
     .hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: clamp(380px, 58vh, 620px);
-      padding: clamp(34px, 5.5vw, 64px);
-      color: #fff;
+      max-width: 780px;
     }
 
-    .hero-slogan {
+    .eyebrow {
+      margin: 0 0 15px;
+      color: var(--gold-soft);
+      font-size: .84rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
       margin: 0;
-      max-width: 880px;
-      font-size: 64px;
-      line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: 0;
-      word-break: keep-all;
-      text-wrap: balance;
-      text-shadow: 0 8px 30px rgba(0, 0, 0, .32);
-    }
-
-    .service-link-card {
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      border: 1px solid #c7d6ef;
-      background: #ffffff;
-      box-shadow: 0 18px 46px rgba(18, 52, 122, .12);
-      text-align: center;
-    }
-
-    .service-main-card {
-      background: #ffffff;
-    }
-
-    .service-mini-card {
-      background: #ffffff;
-    }
-
-    .service-mini-card .service-mini-title {
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 3.5rem;
-      /* Standardized height for alignment */
-    }
-
-    .service-mini-card .service-mini-desc {
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-wrap: balance;
-      min-height: 4.5rem;
-      /* Standardized height for alignment */
-    }
-
-    .service-card-label {
-      color: #1d4fba;
-      font-size: 12px;
-      letter-spacing: 0;
-      font-weight: 800;
-      text-align: center;
-    }
-
-    .service-card-title {
-      margin-top: 8px;
-      font-size: 30px;
+      font-family: "Noto Serif KR", "Malgun Gothic", serif;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
       line-height: 1.12;
-      letter-spacing: 0;
-      font-weight: 900;
-      color: #0f274f;
-      text-align: center;
+      font-weight: 700;
+      text-wrap: balance;
     }
 
-    .service-mini-title {
-      margin-top: 12px;
-      font-size: 24px;
-      line-height: 1.2;
-      letter-spacing: 0;
-      font-weight: 850;
-      color: #0f274f;
-      text-align: center;
-    }
-
-    .service-mini-desc {
-      margin-top: 10px;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #4a6188;
+    .hero-lead {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, .84);
+      font-size: 1.12rem;
+      line-height: 1.85;
       font-weight: 600;
-      text-align: center;
     }
 
-    .service-card-top {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .service-icon-box {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid #bfd4f7;
-      background: linear-gradient(180deg, #f8fbff 0%, #e9f2ff 100%);
-      color: #2e5ab8;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .service-icon-box svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .service-list-v {
+    .hero-actions {
       display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin-top: 12px;
-      flex: 1;
-      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
     }
 
-    .service-item-v {
-      font-size: 30px;
-      font-weight: 850;
-      color: #143768;
-      letter-spacing: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      line-height: 1.2;
-    }
-
-    .service-item-v .num {
-      font-size: 40px;
-      color: #1d4fba;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .service-item-v .txt {
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: 0;
-      color: #0f274f;
-    }
-
-    .divider-grad {
-      height: 1px;
-      width: 100%;
-      background: linear-gradient(to right, transparent, #2e5ab8, transparent);
-      opacity: 0.2;
-    }
-
-    .service-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      min-height: 58px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: var(--brand-grad);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 16px;
-      transition: .24s ease;
-      box-shadow: 0 12px 28px rgba(20, 50, 103, .2);
-      padding: 0 16px;
-    }
-
-    .service-action:hover {
-      border-color: #5c91fa;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(29, 77, 186, .36);
-      filter: brightness(1.03);
-    }
-
-    .service-action svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-    }
-
-    .naver-action {
-      background: #03c75a !important;
-      border: 1px solid #02aa4f !important;
-      color: #ffffff !important;
-      box-shadow: 0 14px 30px rgba(3, 199, 90, .35) !important;
-    }
-
-    .naver-action:hover {
-      border-color: #029a48 !important;
-      box-shadow: 0 18px 34px rgba(3, 199, 90, .4) !important;
-      filter: brightness(1.04);
-    }
-
-    .service-action.disabled {
-      color: rgba(255, 255, 255, .6);
-      border-color: transparent;
-      background: linear-gradient(to right, #1e293b, #334155);
-      cursor: not-allowed;
-      pointer-events: none;
-      box-shadow: none;
-      transform: none;
-      filter: none;
-    }
-
-    .consult-mini {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
-      padding: 0 24px;
-    }
-
-    .consult-mini-inner {
-      display: inline-flex;
-      align-items: center;
-      gap: 24px;
-      padding: 22px 56px;
-      background: var(--brand-grad);
-      border-radius: 9999px;
-      box-shadow: 0 24px 48px rgba(20, 50, 103, 0.25);
-      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .consult-mini-inner:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 30px 60px rgba(29, 79, 186, 0.4);
-      filter: brightness(1.1);
-    }
-
-    .consult-mini-inner:active {
-      transform: translateY(-2px) scale(0.98);
-      filter: brightness(0.95);
-    }
-
-    .consult-mini-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      backdrop-filter: blur(8px);
-      box-shadow:
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        0 8px 16px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-
-    .consult-mini-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.1);
-    }
-
-    .consult-mini-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .consult-mini-label {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .consult-mini-number {
-      font-size: clamp(24px, 3.5vw, 32px);
-      color: #ffffff;
-      font-weight: 800;
-      letter-spacing: 0;
-      line-height: 1;
-    }
-
-    .contact-wrap {
+    .hero-summary {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 48px));
+      margin: -54px auto 0;
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 32px;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(7, 31, 58, .72);
+      backdrop-filter: blur(16px);
+      color: var(--white);
+      box-shadow: 0 24px 70px rgba(7, 31, 58, .24);
+    }
+
+    .hero-summary div {
+      min-height: 108px;
+      padding: 24px;
+      border-right: 1px solid rgba(255, 255, 255, .14);
+    }
+
+    .hero-summary div:last-child {
+      border-right: 0;
+    }
+
+    .hero-summary span {
+      display: block;
+      color: rgba(255, 255, 255, .58);
+      font-size: .78rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .hero-summary strong {
+      display: block;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .section {
+      padding: 104px 0;
+    }
+
+    .section-soft {
+      background: var(--ivory);
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-blue {
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(8, 47, 87, .95), rgba(15, 76, 129, .92)),
+        var(--classic-blue);
+    }
+
+    .section-head {
+      max-width: 740px;
+      margin-bottom: 42px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--classic-blue);
+      font-size: .82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .section-blue .section-kicker {
+      color: var(--gold-soft);
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Serif KR", "Malgun Gothic", serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      line-height: 1.28;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .section-blue .section-title {
+      color: var(--white);
+    }
+
+    .section-copy {
+      max-width: 640px;
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.75;
+    }
+
+    .section-blue .section-copy {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .quick-layout {
+      display: grid;
+      grid-template-columns: .84fr 1.16fr;
+      gap: 24px;
       align-items: stretch;
     }
 
-    .experts-visual-container {
-      position: relative;
-      max-width: 780px;
-      margin: 0 auto;
-      border-radius: 24px;
+    .portrait-card,
+    .overview-card,
+    .channel-card,
+    .service-card,
+    .detail-card,
+    .support-card,
+    .contact-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 16px 48px rgba(8, 47, 87, .08);
+    }
+
+    .portrait-card {
       overflow: hidden;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
-      background: #f8fafc;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: var(--white);
     }
 
-    .experts-portrait {
+    .portrait-card img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .portrait-label {
+      padding: 22px 28px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue-deep), var(--classic-blue));
+    }
+
+    .portrait-label span {
       display: block;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .experts-visual-container:hover .experts-portrait {
-      transform: scale(1.02);
-    }
-
-    .glass-profile {
-      position: absolute;
-      bottom: 40px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      padding: 24px 34px;
-      border-radius: 18px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-      transition: all 0.4s ease;
-      z-index: 10;
-    }
-
-    .glass-profile:hover {
-      background: rgba(255, 255, 255, 0.92);
-      transform: translateY(-8px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
-    }
-
-    .glass-profile.left {
-      left: 8%;
-    }
-
-    .glass-profile.right {
-      right: 8%;
-    }
-
-    .glass-profile .label {
-      font-size: 13px;
+      color: rgba(255, 255, 255, .7);
+      font-size: .82rem;
       font-weight: 800;
-      color: var(--brand);
-      text-transform: uppercase;
-      letter-spacing: 0;
-      margin-bottom: 4px;
     }
 
-    .glass-profile .name {
-      font-size: 28px;
+    .portrait-label strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 1.35rem;
       font-weight: 900;
-      color: var(--navy);
-      letter-spacing: 0;
     }
 
-    body * {
-      letter-spacing: 0 !important;
+    .quick-side {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
-    #detail-corp .panel>div:first-child,
-    #detail-realestate .panel-soft>div:first-child,
-    #detail-civil .panel>div:first-child {
-      display: none;
+    .overview-card {
+      grid-row: span 2;
+      padding: 32px;
+      background:
+        linear-gradient(180deg, rgba(15, 76, 129, .04), rgba(15, 76, 129, .01)),
+        var(--white);
     }
 
-    #detail-corp .panel,
-    #detail-realestate .panel-soft,
-    #detail-civil .panel {
-      padding: 32px 28px !important;
+    .overview-title {
+      color: var(--classic-blue);
+      font-size: .82rem;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
-    #detail-corp h4,
-    #detail-realestate h4,
-    #detail-civil h4 {
-      font-size: 24px !important;
-      margin-bottom: 8px !important;
+    .overview-list {
+      display: grid;
+      gap: 0;
+      margin: 28px 0 0;
+      border-top: 1px solid var(--line);
     }
 
-    #detail-corp p,
-    #detail-realestate p,
-    #detail-civil p {
-      font-size: 18px !important;
-      line-height: 1.7 !important;
+    .overview-list a {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    @media (max-width: 767px) {
-      .experts-visual-container {
-        border-radius: 24px;
-      }
+    .overview-list span {
+      color: var(--gold);
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
 
-      .glass-profile {
-        position: relative;
-        bottom: 0;
-        left: 0 !important;
-        right: 0 !important;
-        margin: 12px 14px 0;
-        text-align: center;
-        padding: 18px;
-      }
+    .overview-list strong {
+      color: var(--blue-ink);
+      font-size: 1.45rem;
+      font-weight: 900;
+    }
 
-      .glass-profile+.glass-profile {
-        margin-top: 10px;
-      }
+    .channel-card {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      background: var(--white);
+    }
+
+    .channel-card small {
+      color: var(--classic-blue);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .channel-card h3 {
+      margin: 16px 0 10px;
+      color: var(--blue-ink);
+      font-size: 1.38rem;
+      line-height: 1.38;
+    }
+
+    .channel-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .channel-card .link {
+      margin-top: 24px;
+      color: var(--classic-blue);
+      font-weight: 900;
+    }
+
+    .disabled-card {
+      background: linear-gradient(180deg, rgba(15, 76, 129, .04), rgba(255, 255, 255, .74));
+    }
+
+    .phone-cta {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-cta a {
+      min-height: 72px;
+      min-width: min(100%, 460px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      border-radius: 999px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--classic-blue), var(--blue-deep));
+      box-shadow: 0 22px 54px rgba(15, 76, 129, .24);
+      font-weight: 900;
+    }
+
+    .phone-cta span {
+      color: rgba(255, 255, 255, .7);
+      font-size: .88rem;
+    }
+
+    .phone-cta strong {
+      font-size: clamp(1.45rem, 4vw, 2rem);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 230px;
+      padding: 30px;
+      background: var(--white);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(15, 76, 129, .4);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card span {
+      color: var(--gold);
+      font-family: "Noto Serif KR", serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .service-card h3 {
+      margin: 18px 0 12px;
+      color: var(--blue-ink);
+      font-size: 1.65rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .detail-group {
+      margin-top: 78px;
+    }
+
+    .detail-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-head h3 {
+      margin: 0;
+      color: var(--blue-ink);
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.85rem;
+      line-height: 1.35;
+    }
+
+    .detail-head p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .detail-grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .detail-card {
+      min-height: 128px;
+      padding: 22px;
+      background: var(--white);
+      box-shadow: none;
+    }
+
+    .detail-card strong {
+      display: block;
+      color: var(--blue-ink);
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .detail-card span {
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 600;
+    }
+
+    .experts-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .experts-copy {
+      max-width: 480px;
+    }
+
+    .experts-copy h2 {
+      margin: 0;
+      color: var(--white);
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      line-height: 1.28;
+    }
+
+    .experts-copy p {
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, .72);
+      font-weight: 600;
+    }
+
+    .experts-photo {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .06);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .22);
+    }
+
+    .experts-photo img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .expert-tags {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      background: rgba(7, 31, 58, .9);
+      color: var(--white);
+    }
+
+    .expert-tags div {
+      padding: 18px 20px;
+      border-right: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .expert-tags div:last-child {
+      border-right: 0;
+    }
+
+    .expert-tags span {
+      display: block;
+      color: rgba(255, 255, 255, .62);
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .expert-tags strong {
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .support-card {
+      min-height: 210px;
+      padding: 30px;
+      background: var(--white);
+    }
+
+    .support-card span {
+      display: inline-flex;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--classic-blue);
+      background: rgba(15, 76, 129, .06);
+      font-weight: 900;
+    }
+
+    .support-card h3 {
+      margin: 0 0 12px;
+      color: var(--blue-ink);
+      font-size: 1.28rem;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      padding: 30px;
+      background: var(--white);
+    }
+
+    .contact-card h3 {
+      margin: 0 0 22px;
+      color: var(--blue-ink);
+      font-size: 1.42rem;
+    }
+
+    .map {
+      height: 280px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #e8edf2;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(.15) saturate(.85);
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .info-row strong {
+      color: var(--classic-blue);
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      color: var(--blue-ink);
+      font-size: .94rem;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      min-height: 50px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fffdf9;
+      resize: vertical;
+    }
+
+    .field textarea {
+      min-height: 130px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #9aa3ae;
+    }
+
+    .privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 4px 0 18px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .privacy input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--classic-blue);
     }
 
     .footer {
-      background: #162f56;
-      color: #cbd5e1;
-      border-top: 1px solid rgba(255, 255, 255, .08);
+      color: rgba(255, 255, 255, .72);
+      background: var(--blue-ink);
+      border-top: 1px solid rgba(255, 255, 255, .1);
     }
 
-    @media (max-width: 1023px) {
-      .contact-wrap {
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      padding: 46px 0 38px;
+    }
+
+    .footer strong {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--white);
+      font-size: 1.15rem;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: .92rem;
+      line-height: 1.85;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-links a,
+    .footer-links span {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 6px;
+      color: rgba(255, 255, 255, .86);
+      font-size: .86rem;
+      font-weight: 800;
+    }
+
+    .footer-links a:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .copyright {
+      padding: 18px 0 24px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .48);
+      font-size: .82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1060px) {
+      .nav {
+        gap: 16px;
+        font-size: .88rem;
+      }
+
+      .quick-layout,
+      .experts-layout,
+      .contact-layout {
         grid-template-columns: 1fr;
       }
+
+      .detail-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
-    @media (max-width: 767px) {
-      .header .container {
-        width: min(360px, calc(100% - 28px));
-      }
-
-      .header-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 12px 0;
-      }
-
-      .brand-title {
-        font-size: 14px;
-        gap: 7px;
-        white-space: nowrap;
-        line-height: 1;
-        color: #ffffff;
-      }
-
-      .header.scrolled .brand-title {
-        color: var(--brand-dark);
-      }
-
-      .brand-title img {
-        width: 21px;
-        height: 21px;
-      }
-
-      .header-consult-btn {
-        height: 42px !important;
-        padding: 0 12px !important;
-        font-size: 14px !important;
-        border-radius: 12px !important;
-        flex-shrink: 0;
-        box-shadow: 0 10px 22px rgba(29, 79, 186, .38);
-      }
-
-      .brand-sub {
-        margin-top: 5px;
-        padding-left: 28px;
-        font-size: 15px;
-        line-height: 1;
-        color: #ffffff;
-      }
-
-      .header.scrolled .brand-sub {
-        color: var(--brand-dark);
+    @media (max-width: 860px) {
+      .container {
+        width: min(100% - 36px, 720px);
       }
 
       .nav {
         display: none;
       }
 
+      .header-inner {
+        min-height: 70px;
+      }
+
+      .hero,
+      .hero-inner {
+        min-height: 86svh;
+      }
+
+      .hero-inner {
+        padding: 104px 0 82px;
+      }
+
+      .hero-summary,
+      .quick-side,
+      .service-grid,
+      .detail-grid,
+      .detail-grid.three,
+      .support-grid,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-summary {
+        width: min(100% - 36px, 720px);
+      }
+
+      .hero-summary div {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .14);
+      }
+
+      .hero-summary div:last-child {
+        border-bottom: 0;
+      }
+
       .section {
-        padding: 60px 0;
+        padding: 78px 0;
       }
 
-      .section-title {
-        font-size: 34px;
-        line-height: 1.16;
+      .portrait-card img {
+        min-height: 360px;
       }
 
-      .hero-visual,
-      .hero-copy {
-        min-height: 320px;
+      .detail-head {
+        display: block;
       }
 
-      .hero-full,
-      .hero-full .hero-copy {
-        min-height: 78svh;
-      }
-
-      .hero-copy {
-        padding: 94px 24px 56px;
-      }
-
-      .hero-visual::before {
-        background-position: center center;
-      }
-
-      .hero-slogan {
-        max-width: 320px;
-        font-size: 36px;
-        line-height: 1.2;
-      }
-
-      .hero-copy .eyebrow {
-        font-size: 12px;
-        line-height: 1.4;
-      }
-
-      .service-card-title {
-        font-size: 25px;
-      }
-
-      .service-mini-title {
-        font-size: 21px;
-      }
-
-      .service-main-card .service-action {
-        margin-top: 24px !important;
-      }
-
-      .service-links-grid {
-        grid-auto-rows: auto !important;
-      }
-
-      .service-mini-card {
-        padding: 18px !important;
-        min-height: 0 !important;
-        height: auto !important;
-        justify-content: space-between;
-      }
-
-      .service-mini-card .service-card-top {
-        margin-bottom: 4px;
-      }
-
-      .service-mini-card .service-mini-title {
-        min-height: 2.6em;
+      .detail-head p {
         margin-top: 8px;
-        font-size: 19px;
-        line-height: 1.28;
       }
 
-      .service-mini-card .service-action {
-        min-height: 50px;
-        margin-top: 12px !important;
-        border-radius: 14px;
-        font-size: 14px;
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .brand img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .brand-name {
+        font-size: .92rem;
+      }
+
+      .brand-tel {
+        font-size: .72rem;
+      }
+
+      .site-header .btn-primary {
+        min-height: 42px;
         padding: 0 12px;
+        font-size: .86rem;
       }
 
-      .service-tag {
-        min-height: 60px;
-        font-size: 20px;
-        padding: 0 16px;
+      .hero {
+        background-position: 58% center;
       }
 
-      .service-link-card {
-        padding: 22px;
+      .hero h1 {
+        font-size: 2.35rem;
+        line-height: 1.22;
       }
 
-      .service-action {
-        min-height: 54px;
-        font-size: 16px;
+      .hero-lead {
+        font-size: 1rem;
+        line-height: 1.75;
       }
 
-      .consult-mini-inner {
-        padding: 16px 32px;
-        gap: 14px;
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
         width: 100%;
-        max-width: 400px;
       }
 
-      .consult-mini-icon {
-        width: 42px;
-        height: 42px;
+      .hero-summary {
+        width: calc(100% - 28px);
       }
 
-      .consult-mini-icon svg {
-        width: 20px;
-        height: 20px;
+      .section-title,
+      .experts-copy h2 {
+        font-size: 1.9rem;
       }
 
-      .consult-mini-number {
-        font-size: 32px;
+      .overview-card,
+      .channel-card,
+      .service-card,
+      .detail-card,
+      .support-card,
+      .contact-card {
+        padding: 24px;
       }
 
-      .consult-mini-label {
-        font-size: 15px;
+      .overview-list a {
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
       }
 
-      .panel,
-      .panel-soft {
+      .overview-list strong {
+        font-size: 1.22rem;
+      }
+
+      .phone-cta a {
+        min-height: 66px;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .expert-tags {
+        grid-template-columns: 1fr;
+      }
+
+      .expert-tags div {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .16);
+      }
+
+      .expert-tags div:last-child {
+        border-bottom: 0;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+  <style>
+    /* Premium redesign layer: same section structure, rebuilt visual details. */
+    :root {
+      --classic-blue: #0f4c81;
+      --classic-blue-2: #0b3d68;
+      --blue-deep: #061f3d;
+      --blue-ink: #071a31;
+      --charcoal: #1f2933;
+      --ink: #18222e;
+      --muted: #687482;
+      --paper: #f4f7fb;
+      --ivory: #eef3f8;
+      --white: #ffffff;
+      --line: rgba(15, 76, 129, .18);
+      --gold: #b99558;
+      --gold-soft: #d2b77d;
+      --shadow: 0 28px 74px rgba(7, 26, 49, .13);
+      --focus: 0 0 0 4px rgba(15, 76, 129, .22);
+    }
+
+    body {
+      background:
+        linear-gradient(90deg, rgba(15, 76, 129, .035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15, 76, 129, .028) 1px, transparent 1px),
+        #f4f7fb;
+      background-size: 56px 56px;
+    }
+
+    .site-header {
+      border-bottom: 0;
+      background: transparent;
+      padding-top: 14px;
+    }
+
+    .header-inner {
+      min-height: 68px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      background: rgba(6, 31, 61, .54);
+      box-shadow: 0 18px 54px rgba(6, 31, 61, .22);
+      backdrop-filter: blur(18px);
+    }
+
+    .site-header.is-scrolled {
+      padding-top: 10px;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .site-header.is-scrolled .header-inner {
+      color: var(--blue-ink);
+      border-color: rgba(15, 76, 129, .16);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 14px 34px rgba(7, 26, 49, .1);
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border-color: rgba(210, 183, 125, .52);
+      background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(15, 76, 129, .08);
+    }
+
+    .brand-name {
+      font-size: .98rem;
+    }
+
+    .brand-tel {
+      color: rgba(255, 255, 255, .68);
+      font-size: .74rem;
+    }
+
+    .nav {
+      gap: 24px;
+      color: rgba(255, 255, 255, .74);
+      font-size: .88rem;
+    }
+
+    .nav a::after {
+      bottom: 4px;
+      height: 2px;
+      background: var(--gold-soft);
+      opacity: 1;
+    }
+
+    .btn {
+      min-height: 46px;
+      border-radius: 999px;
+      padding: 0 22px;
+      box-shadow: none;
+    }
+
+    .site-header .btn-primary,
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--classic-blue), var(--blue-deep));
+      border-color: rgba(255, 255, 255, .12);
+    }
+
+    .site-header .btn-primary:hover,
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #145b98, var(--classic-blue-2));
+    }
+
+    .btn-blue {
+      background: var(--blue-ink);
+      border-color: var(--blue-ink);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255, 255, 255, .38);
+    }
+
+    .hero {
+      min-height: 94svh;
+      background-image:
+        linear-gradient(90deg, rgba(6, 31, 61, .96) 0%, rgba(15, 76, 129, .82) 47%, rgba(15, 76, 129, .28) 100%),
+        linear-gradient(180deg, rgba(6, 31, 61, .1) 0%, rgba(6, 31, 61, .78) 100%),
+        url("hero-handshake.jpg");
+      background-position: center;
+    }
+
+    .hero::before {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+      background-size: 68px 68px;
+      mask-image: linear-gradient(90deg, black 0%, transparent 80%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: min(7vw, 92px);
+      top: 23%;
+      width: 1px;
+      height: 46%;
+      background: linear-gradient(180deg, transparent, var(--gold-soft), transparent);
+      opacity: .9;
+    }
+
+    .hero-inner {
+      min-height: 94svh;
+      align-items: end;
+      padding: 142px 0 138px;
+    }
+
+    .hero-copy {
+      max-width: 830px;
+      padding-left: 26px;
+      border-left: 1px solid rgba(210, 183, 125, .6);
+    }
+
+    .eyebrow,
+    .section-kicker {
+      letter-spacing: 0 !important;
+      color: var(--gold-soft);
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      line-height: 1.06;
+      text-shadow: 0 16px 38px rgba(0, 0, 0, .26);
+    }
+
+    .hero-lead {
+      max-width: 640px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    .hero-actions .btn {
+      min-width: 170px;
+      min-height: 54px;
+    }
+
+    .hero-summary {
+      width: min(1120px, calc(100% - 48px));
+      margin-top: -72px;
+      border: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 0 34px 90px rgba(7, 26, 49, .18);
+    }
+
+    .hero-summary div {
+      min-height: 128px;
+      padding: 28px 30px;
+      border-right: 1px solid rgba(15, 76, 129, .12);
+      background:
+        linear-gradient(180deg, rgba(15, 76, 129, .035), transparent),
+        #fff;
+      position: relative;
+    }
+
+    .hero-summary div::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--classic-blue), var(--gold));
+    }
+
+    .hero-summary span {
+      color: var(--classic-blue);
+      font-size: .82rem;
+    }
+
+    .hero-summary strong {
+      color: var(--blue-ink);
+      font-size: 1.08rem;
+    }
+
+    .section {
+      padding: 112px 0;
+    }
+
+    .section-soft {
+      background:
+        radial-gradient(circle at top left, rgba(15, 76, 129, .09), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+    }
+
+    .section-white {
+      background:
+        linear-gradient(90deg, rgba(15, 76, 129, .035) 1px, transparent 1px),
+        #ffffff;
+      background-size: 72px 72px;
+    }
+
+    .section-blue {
+      background:
+        radial-gradient(circle at top right, rgba(210, 183, 125, .2), transparent 30%),
+        linear-gradient(135deg, #061f3d 0%, #0f4c81 58%, #0a355c 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-blue::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: .6;
+    }
+
+    .section-blue > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head {
+      margin-bottom: 50px;
+    }
+
+    .section-head.center {
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .section-head.center::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 72px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--classic-blue), var(--gold));
+      transform: translateX(-50%);
+    }
+
+    .section-title {
+      color: var(--blue-ink);
+      font-size: clamp(2.08rem, 4vw, 3.18rem);
+    }
+
+    .section-kicker {
+      color: var(--classic-blue);
+    }
+
+    .section-copy {
+      color: #566574;
+    }
+
+    .portrait-card,
+    .overview-card,
+    .channel-card,
+    .service-card,
+    .detail-card,
+    .support-card,
+    .contact-card {
+      border-radius: 18px;
+      border: 1px solid rgba(15, 76, 129, .16);
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 22px 60px rgba(7, 26, 49, .1);
+      overflow: hidden;
+    }
+
+    .quick-layout {
+      gap: 26px;
+    }
+
+    .portrait-card {
+      border: 0;
+      background: var(--blue-ink);
+      box-shadow: 0 34px 80px rgba(7, 26, 49, .18);
+    }
+
+    .portrait-card img {
+      min-height: 470px;
+      filter: saturate(.9) contrast(1.02);
+    }
+
+    .portrait-label {
+      padding: 24px 30px 28px;
+      background:
+        linear-gradient(90deg, rgba(210, 183, 125, .18), transparent),
+        var(--blue-ink);
+      border-top: 1px solid rgba(210, 183, 125, .3);
+    }
+
+    .portrait-label strong {
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.55rem;
+    }
+
+    .quick-side {
+      gap: 20px;
+    }
+
+    .overview-card {
+      color: var(--white);
+      background:
+        linear-gradient(145deg, rgba(15, 76, 129, .96), rgba(6, 31, 61, .98)),
+        var(--classic-blue);
+      border-color: rgba(255, 255, 255, .12);
+    }
+
+    .overview-title {
+      color: var(--gold-soft);
+    }
+
+    .overview-list {
+      border-top-color: rgba(255, 255, 255, .16);
+    }
+
+    .overview-list a {
+      border-bottom-color: rgba(255, 255, 255, .16);
+    }
+
+    .overview-list span {
+      color: var(--gold-soft);
+    }
+
+    .overview-list strong {
+      color: var(--white);
+    }
+
+    .overview-card .btn-blue {
+      margin-top: 30px;
+      color: var(--blue-ink);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .channel-card {
+      position: relative;
+      border-left: 5px solid var(--classic-blue);
+      background:
+        linear-gradient(180deg, rgba(15, 76, 129, .045), transparent 45%),
+        #fff;
+    }
+
+    .channel-card::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      bottom: -38px;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(15, 76, 129, .12);
+      border-radius: 999px;
+    }
+
+    .channel-card small {
+      color: var(--classic-blue);
+    }
+
+    .channel-card h3 {
+      font-family: "Noto Serif KR", serif;
+      color: var(--blue-ink);
+    }
+
+    .channel-card .link {
+      color: var(--classic-blue);
+      position: relative;
+      z-index: 1;
+    }
+
+    .disabled-card {
+      border-left-color: var(--gold);
+    }
+
+    .phone-cta a {
+      min-width: min(100%, 520px);
+      min-height: 74px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background:
+        linear-gradient(135deg, var(--blue-ink), var(--classic-blue));
+      box-shadow: 0 26px 62px rgba(15, 76, 129, .24);
+    }
+
+    .service-grid {
+      gap: 22px;
+    }
+
+    .service-card {
+      min-height: 252px;
+      padding: 34px;
+      position: relative;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, #fff, #f8fbff);
+      isolation: isolate;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border-top: 5px solid var(--classic-blue);
+      pointer-events: none;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      right: 28px;
+      top: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      background: rgba(15, 76, 129, .08);
+      z-index: -1;
+    }
+
+    .service-card span {
+      display: inline-flex;
+      width: 54px;
+      height: 54px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--classic-blue);
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 1rem;
+    }
+
+    .service-card h3 {
+      margin-top: 24px;
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .detail-group {
+      padding: 34px;
+      border: 1px solid rgba(15, 76, 129, .12);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(15, 76, 129, .035), rgba(255, 255, 255, .72)),
+        #fff;
+      box-shadow: 0 22px 58px rgba(7, 26, 49, .08);
+    }
+
+    .detail-group + .detail-group {
+      margin-top: 36px;
+    }
+
+    .detail-head {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 24px;
+    }
+
+    .detail-head h3 {
+      position: relative;
+      padding-left: 18px;
+      font-size: 1.78rem;
+    }
+
+    .detail-head h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .2em;
+      width: 4px;
+      height: 1.1em;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .detail-card {
+      min-height: 118px;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: none;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 76, 129, .36);
+      background: #f9fcff;
+    }
+
+    .detail-card strong {
+      color: var(--classic-blue-2);
+    }
+
+    .experts-layout {
+      align-items: stretch;
+    }
+
+    .experts-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 44px 0;
+    }
+
+    .experts-copy h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    }
+
+    .experts-photo {
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, .06);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .28);
+    }
+
+    .experts-photo img {
+      aspect-ratio: 4 / 3;
+      filter: saturate(.92) contrast(1.02);
+    }
+
+    .expert-tags {
+      background: rgba(6, 31, 61, .94);
+      backdrop-filter: blur(16px);
+    }
+
+    .support-card {
+      position: relative;
+      min-height: 224px;
+      padding: 34px;
+      background: #fff;
+    }
+
+    .support-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border-bottom: 5px solid var(--classic-blue);
+      pointer-events: none;
+    }
+
+    .support-card span {
+      border: 0;
+      color: var(--blue-ink);
+      background: rgba(185, 149, 88, .22);
+    }
+
+    .support-card h3 {
+      font-family: "Noto Serif KR", serif;
+      color: var(--blue-ink);
+    }
+
+    .contact-layout {
+      gap: 28px;
+    }
+
+    .contact-card {
+      border-radius: 22px;
+      padding: 34px;
+      background:
+        linear-gradient(180deg, #fff, #f8fbff);
+    }
+
+    .contact-card h3 {
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(15, 76, 129, .14);
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .map {
+      height: 300px;
+      border-radius: 16px;
+      border-color: rgba(15, 76, 129, .16);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      background: #fff;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--classic-blue);
+      box-shadow: var(--focus);
+      outline: 0;
+    }
+
+    .footer {
+      background:
+        linear-gradient(135deg, #061f3d, #092b50);
+    }
+
+    .footer-inner {
+      padding-top: 54px;
+    }
+
+    .footer-links a,
+    .footer-links span {
+      border-radius: 999px;
+    }
+
+    @media (max-width: 860px) {
+      .site-header {
+        padding-top: 10px;
+      }
+
+      .header-inner {
+        border-radius: 22px;
+      }
+
+      .hero-copy {
+        padding-left: 18px;
+      }
+
+      .hero-summary {
+        width: min(100% - 36px, 720px);
         border-radius: 18px;
+      }
+
+      .hero-summary div {
+        border-right: 0;
+      }
+
+      .detail-group {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-header .btn-primary {
+        color: var(--white);
+      }
+
+      .hero {
+        min-height: 88svh;
+      }
+
+      .hero-inner {
+        min-height: 88svh;
+        padding: 118px 0 112px;
+      }
+
+      .hero::after {
+        left: 14px;
+      }
+
+      .hero h1 {
+        font-size: 2.55rem;
+      }
+
+      .hero-summary {
+        width: calc(100% - 28px);
+      }
+
+      .overview-card,
+      .channel-card,
+      .service-card,
+      .detail-card,
+      .support-card,
+      .contact-card {
+        border-radius: 16px;
+      }
+    }
+  </style>
+  <style>
+    /* Editorial legal-office redesign guided by design.md. */
+    :root {
+      --classic-blue: #0f4c81;
+      --classic-blue-2: #0b3b64;
+      --blue-deep: #071e38;
+      --blue-ink: #0a1d33;
+      --charcoal: #222832;
+      --ink: #1f2732;
+      --muted: #5f6b79;
+      --paper: #f6f8fb;
+      --ivory: #f1f4f8;
+      --white: #ffffff;
+      --line: rgba(15, 76, 129, .18);
+      --gold: #aa8747;
+      --gold-soft: #c6aa6b;
+      --shadow: 0 18px 44px rgba(10, 29, 51, .08);
+      --focus: 0 0 0 3px rgba(15, 76, 129, .22);
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .site-header,
+    .site-header.is-scrolled {
+      padding-top: 0;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid rgba(15, 76, 129, .14);
+      box-shadow: none;
+      color: var(--blue-ink);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner,
+    .site-header.is-scrolled .header-inner {
+      min-height: 76px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: inherit;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 4px;
+      border: 1px solid rgba(15, 76, 129, .18);
+      box-shadow: none;
+    }
+
+    .brand-name {
+      color: var(--blue-ink);
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .brand-tel,
+    .site-header.is-scrolled .brand-tel {
+      color: var(--classic-blue);
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    .nav,
+    .site-header.is-scrolled .nav {
+      color: #3a4655;
+      gap: 28px;
+      font-size: .91rem;
+    }
+
+    .nav a::after {
+      bottom: 4px;
+      height: 1px;
+      background: var(--classic-blue);
+    }
+
+    .btn,
+    .hero-actions .btn {
+      min-height: 48px;
+      border-radius: 3px;
+      padding: 0 22px;
+      box-shadow: none;
+    }
+
+    .site-header .btn-primary,
+    .btn-primary,
+    .btn-blue {
+      color: var(--white);
+      background: var(--classic-blue);
+      border-color: var(--classic-blue);
+    }
+
+    .site-header .btn-primary:hover,
+    .btn-primary:hover,
+    .btn-blue:hover {
+      background: var(--classic-blue-2);
+      border-color: var(--classic-blue-2);
+      transform: none;
+    }
+
+    .btn-outline {
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255, 255, 255, .48);
+    }
+
+    .hero {
+      min-height: 86svh;
+      background-image:
+        linear-gradient(90deg, rgba(7, 30, 56, .93) 0%, rgba(15, 76, 129, .78) 52%, rgba(15, 76, 129, .28) 100%),
+        url("hero-handshake.jpg");
+      background-position: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(180deg, transparent, rgba(7, 30, 56, .68));
+      mask-image: none;
+    }
+
+    .hero::after {
+      display: none;
+    }
+
+    .hero-inner {
+      min-height: 86svh;
+      align-items: center;
+      padding: 120px 0 86px;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      padding: 0;
+      border-left: 0;
+    }
+
+    .eyebrow {
+      color: var(--gold-soft);
+      margin-bottom: 18px;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .hero h1 {
+      max-width: 690px;
+      font-size: clamp(2.7rem, 6.2vw, 5.15rem);
+      line-height: 1.12;
+      text-shadow: none;
+    }
+
+    .hero-lead {
+      max-width: 610px;
+      color: rgba(255, 255, 255, .84);
+      font-size: 1.04rem;
+      line-height: 1.86;
+    }
+
+    .hero-actions {
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .hero-summary {
+      width: min(1180px, calc(100% - 48px));
+      margin-top: 0;
+      border-radius: 0;
+      border: 1px solid var(--line);
+      border-top: 0;
+      box-shadow: none;
+      background: var(--white);
+      overflow: visible;
+    }
+
+    .hero-summary div {
+      min-height: 112px;
+      padding: 25px 28px;
+      background: #fff;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-summary div::before {
+      display: none;
+    }
+
+    .hero-summary span {
+      color: var(--classic-blue);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .hero-summary strong {
+      color: var(--blue-ink);
+      font-size: 1.02rem;
+    }
+
+    .section {
+      padding: 104px 0;
+    }
+
+    .section-soft,
+    .section-white,
+    .section-blue {
+      background: var(--paper);
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-blue {
+      color: var(--white);
+      background: var(--classic-blue);
+      overflow: hidden;
+    }
+
+    .section-blue::before {
+      display: none;
+    }
+
+    .section-head.center {
+      padding-bottom: 0;
+    }
+
+    .section-head.center::after {
+      display: none;
+    }
+
+    .section-kicker {
+      color: var(--classic-blue);
+      font-size: .78rem;
+      margin-bottom: 12px;
+    }
+
+    .section-blue .section-kicker,
+    .section-blue .eyebrow {
+      color: var(--gold-soft);
+    }
+
+    .section-title {
+      color: var(--blue-ink);
+      font-size: clamp(2rem, 3.5vw, 2.72rem);
+      line-height: 1.32;
+    }
+
+    .section-blue .section-title,
+    .experts-copy h2 {
+      color: var(--white);
+    }
+
+    .section-copy {
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .section-blue .section-copy,
+    .experts-copy p {
+      color: rgba(255, 255, 255, .76);
+    }
+
+    .portrait-card,
+    .overview-card,
+    .channel-card,
+    .service-card,
+    .detail-card,
+    .support-card,
+    .contact-card {
+      border-radius: 2px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .quick-layout {
+      gap: 22px;
+    }
+
+    .portrait-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .portrait-card img {
+      min-height: 440px;
+      filter: none;
+    }
+
+    .portrait-label {
+      padding: 24px 28px;
+      background: var(--blue-ink);
+      border-top: 4px solid var(--classic-blue);
+    }
+
+    .portrait-label strong {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .quick-side {
+      gap: 16px;
+    }
+
+    .overview-card {
+      color: var(--white);
+      background: var(--classic-blue);
+      border-color: var(--classic-blue);
+    }
+
+    .overview-title {
+      color: rgba(255, 255, 255, .68);
+    }
+
+    .overview-list {
+      border-top-color: rgba(255, 255, 255, .18);
+    }
+
+    .overview-list a {
+      border-bottom-color: rgba(255, 255, 255, .18);
+    }
+
+    .overview-list span {
+      color: var(--gold-soft);
+    }
+
+    .overview-list strong {
+      color: var(--white);
+    }
+
+    .overview-card .btn-blue {
+      margin-top: 28px;
+      color: var(--classic-blue);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .channel-card {
+      min-height: 212px;
+      border-left: 0;
+      border-top: 3px solid var(--classic-blue);
+      background: #fff;
+    }
+
+    .channel-card::after {
+      display: none;
+    }
+
+    .disabled-card {
+      border-top-color: var(--gold);
+    }
+
+    .channel-card h3 {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 1.28rem;
+    }
+
+    .phone-cta a {
+      min-height: 66px;
+      border-radius: 2px;
+      background: var(--blue-ink);
+      box-shadow: none;
+    }
+
+    .service-grid {
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 230px;
+      border-radius: 2px;
+      padding: 30px;
+      background: #fff;
+    }
+
+    .service-card:hover,
+    .detail-card:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: rgba(15, 76, 129, .42);
+      background: #fbfdff;
+    }
+
+    .service-card::before {
+      border-top: 3px solid var(--classic-blue);
+    }
+
+    .service-card::after {
+      display: none;
+    }
+
+    .service-card span {
+      display: block;
+      width: auto;
+      height: auto;
+      color: var(--classic-blue);
+      background: transparent;
+      border-radius: 0;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.58rem;
+      text-align: left;
+    }
+
+    .service-card h3 {
+      margin-top: 18px;
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .detail-group {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .detail-group + .detail-group {
+      margin-top: 62px;
+    }
+
+    .detail-head {
+      display: grid;
+      grid-template-columns: minmax(180px, .55fr) 1fr;
+      align-items: end;
+      gap: 28px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid var(--classic-blue);
+    }
+
+    .detail-head h3 {
+      padding-left: 0;
+      font-size: 1.58rem;
+    }
+
+    .detail-head h3::before {
+      display: none;
+    }
+
+    .detail-head p {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .detail-card {
+      min-height: 106px;
+      border-radius: 2px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .detail-card strong {
+      color: var(--blue-ink);
+    }
+
+    .experts-layout {
+      gap: 52px;
+    }
+
+    .experts-copy {
+      padding: 38px 0;
+    }
+
+    .experts-copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .experts-photo {
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      box-shadow: none;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .experts-photo img {
+      aspect-ratio: 16 / 10;
+      filter: none;
+    }
+
+    .expert-tags {
+      background: var(--blue-ink);
+      backdrop-filter: none;
+    }
+
+    .support-card {
+      min-height: 204px;
+      padding: 30px;
+      border-radius: 2px;
+    }
+
+    .support-card::before {
+      border-bottom: 3px solid var(--classic-blue);
+    }
+
+    .support-card span {
+      width: auto;
+      height: auto;
+      margin-bottom: 18px;
+      color: var(--classic-blue);
+      background: transparent;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.38rem;
+    }
+
+    .support-card h3 {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .contact-card {
+      border-radius: 2px;
+      padding: 30px;
+      background: #fff;
+    }
+
+    .contact-card h3 {
+      font-family: "Noto Sans KR", sans-serif;
+      border-bottom-color: var(--line);
+    }
+
+    .map {
+      border-radius: 2px;
+      box-shadow: none;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 2px;
+      background: #fff;
+    }
+
+    .footer {
+      background: var(--blue-ink);
+    }
+
+    .footer-links a,
+    .footer-links span {
+      border-radius: 2px;
+    }
+
+    @media (max-width: 860px) {
+      .site-header,
+      .site-header.is-scrolled {
+        padding-top: 0;
+      }
+
+      .header-inner,
+      .site-header.is-scrolled .header-inner {
+        min-height: 70px;
+        border-radius: 0;
+      }
+
+      .hero-summary div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .detail-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .detail-head p {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        min-height: 82svh;
+      }
+
+      .hero-inner {
+        min-height: 82svh;
+        padding: 104px 0 72px;
+      }
+
+      .hero h1 {
+        font-size: 2.35rem;
+      }
+
+      .hero-summary {
+        width: calc(100% - 28px);
+      }
+
+      .overview-card,
+      .channel-card,
+      .service-card,
+      .detail-card,
+      .support-card,
+      .contact-card {
+        border-radius: 2px;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header">
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <div>
-        <div class="brand-title flex items-center gap-2">
-          <img src="logo.png" alt="법무사 김현수 사무소 로고" class="w-7 h-7 object-contain" />
-          <span>법무사 김현수 사무소</span>
-        </div>
-        <div class="brand-sub">TEL 02-430-0980</div>
-      </div>
-      <nav class="nav">
+      <a class="brand" href="#hero" aria-label="법무사 김현수 사무소 메인으로 이동">
+        <img src="logo.png" alt="" />
+        <span>
+          <span class="brand-name">법무사 김현수 사무소</span>
+          <span class="brand-tel">TEL 02-430-0980</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="주요 메뉴">
         <a href="#hero">메인</a>
         <a href="#services">업무영역</a>
         <a href="#experts">전문가 소개</a>
         <a href="#support">고객 지원</a>
         <a href="#contact">오시는 길</a>
       </nav>
-      <a href="#contact" class="btn-dark header-consult-btn h-14 px-9 text-[18px]">무료상담신청</a>
+      <a class="btn btn-primary" href="#contact">무료상담신청</a>
     </div>
   </header>
 
-  <main id="top">
-
-    <!-- ===== HERO VISUAL ===== -->
-    <section id="hero" class="pt-0 pb-0">
-      <div class="hero-visual hero-full">
-        <div class="container hero-copy">
-          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4">LAW OFFICE KIMHYUNSOO</div>
-          <h1 class="hero-slogan">신뢰를 결과로 증명합니다.</h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== HERO LINKS ===== -->
-    <section id="quick-links" class="section soft pt-8 pb-20">
-      <div class="container">
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 min-h-[560px]">
-          <div class="lg:col-span-5 panel overflow-hidden flex flex-col bg-white">
-            <div class="relative flex-1 min-h-[400px]">
-              <img src="photo-1.jpg" alt="법무사 김현수 사무소" class="absolute inset-0 w-full h-full object-cover">
-            </div>
-            <div class="py-7 px-10 bg-gradient-to-r from-[#143267] to-[#1d4fba] flex items-center justify-center">
-              <span class="text-[34px] font-black text-white tracking-tight">대표법무사 <span
-                  class="opacity-90">김현수</span></span>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-7 auto-rows-fr service-links-grid">
-
-            <article
-              class="panel service-link-card service-main-card sm:row-span-2 hover:-translate-y-1.5 transition duration-300">
-              <div class="service-card-top">
-                <div class="service-card-label">SERVICE GROUP 01</div>
-              </div>
-
-              <div class="service-list-v">
-                <div class="service-item-v"><span class="num">01</span><span class="txt">법인등기</span></div>
-                <div class="divider-grad"></div>
-                <div class="service-item-v"><span class="num">02</span><span class="txt">부동산등기</span></div>
-                <div class="divider-grad"></div>
-                <div class="service-item-v"><span class="num">03</span><span class="txt">민사분쟁</span></div>
-              </div>
-
-              <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener"
-                class="service-action naver-action mt-auto">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z" />
-                </svg>
-                <span>네이버 블로그 바로가기</span>
-              </a>
-            </article>
-
-            <article class="panel service-link-card service-mini-card hover:-translate-y-1.5 transition duration-300">
-              <div class="service-card-top">
-                <div class="service-card-label">SERVICE GROUP 02</div>
-              </div>
-              <h3 class="service-mini-title">개인회생 홈페이지</h3>
-              <a href="#" onclick="return false;" aria-disabled="true" class="service-action disabled mt-6 sm:mt-auto">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M3 10.5L12 3l9 7.5" />
-                  <path d="M5.5 9.5V21h13V9.5" />
-                  <path d="M10 21v-5h4v5" />
-                </svg>
-                <span>홈페이지 준비중</span>
-              </a>
-            </article>
-
-            <article class="panel service-link-card service-mini-card hover:-translate-y-1.5 transition duration-300">
-              <div class="service-card-top">
-
-                <div class="service-card-label">SERVICE GROUP 03</div>
-              </div>
-              <h3 class="service-mini-title">개인회생 블로그</h3>
-              <a href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener"
-                class="service-action naver-action mt-6 sm:mt-auto">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z" />
-                </svg>
-                <span>네이버 블로그 바로가기</span>
-              </a>
-            </article>
-
-          </div>
-        </div>
-
-        <section class="consult-mini" aria-label="상담 전화 안내">
-          <a href="tel:02-430-0980" class="consult-mini-inner">
-            <div class="consult-mini-content">
-              <span class="consult-mini-label">무료전화상담</span>
-              <span class="consult-mini-number">02-430-0980</span>
-            </div>
-          </a>
-        </section>
-
-      </div>
-    </section>
-
-    <!-- ===== SERVICES ===== -->
-    <section id="services" class="bg-white pb-28">
-      <div
-        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#143267] to-[#1d4fba]">
-        <div class="relative z-10 container flex flex-col items-center">
-          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4 opacity-80">Core Services</div>
-          <h2 class="section-title text-white">주요 업무 분야</h2>
-          <p class="mt-5 text-[17px] text-blue-100/80 font-medium">고객의 상황에 맞는 최적의 법률 솔루션을 제공합니다.</p>
-        </div>
-      </div>
-
-      <div class="container">
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <a href="#detail-corp"
-            class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div class="flex items-baseline gap-4 mb-5">
-              <span class="text-[44px] leading-none font-black text-blue-700">01</span>
-              <h3 class="text-[33px] font-black tracking-tight text-slate-800">법인등기</h3>
-            </div>
-            <p class="text-slate-600 leading-[1.8] text-[19px]">법인설립, 임원변경, 본점이전, 전환사채, 증자, 감자, 회사계속</p>
-          </a>
-          <a href="#detail-realestate"
-            class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div class="flex items-baseline gap-4 mb-5">
-              <span class="text-[44px] leading-none font-black text-blue-700">02</span>
-              <h3 class="text-[33px] font-black tracking-tight text-slate-800">부동산등기</h3>
-            </div>
-            <p class="text-slate-600 leading-[1.8] text-[19px]">상속, 증여, 매매 등 다양한 원인으로 인한 부동산 소유권 이전 및 설정 등기</p>
-          </a>
-          <a href="#detail-civil"
-            class="panel-soft p-10 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
-            <div class="flex items-baseline gap-4 mb-5">
-              <span class="text-[44px] leading-none font-black text-blue-700">03</span>
-              <h3 class="text-[33px] font-black tracking-tight text-slate-800">민사분쟁</h3>
-            </div>
-            <p class="text-slate-600 leading-[1.8] text-[19px]">지급명령, 소액사건, 경매 등 채권 확보 및 분쟁 해결을 위한 실무적 법적 대응</p>
-          </a>
-        </div>
-
-        <div class="mt-28" id="detail-corp">
-          <div class="flex flex-col items-center justify-center text-center gap-4 mb-12">
-            <h3 class="text-[32px] font-extrabold tracking-tight text-slate-800">법인등기 상세업무</h3>
-            <div class="w-12 h-1.5 bg-blue-700 rounded-full opacity-80"></div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🏢</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">법인설립</h4>
-              <p class="text-[15px] text-slate-500 font-medium">주식회사, 유한회사, 노무법인,<br>특수법인</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🏛️</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">민법법인</h4>
-              <p class="text-[15px] text-slate-500 font-medium">재단법인, 사단법인</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🤝</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">조합설립</h4>
-              <p class="text-[15px] text-slate-500 font-medium">협동조합</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🧩</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">법인합병·분할</h4>
-              <p class="text-[15px] text-slate-500 font-medium">완전자회사</p>
-            </div>
-
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                📈</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">증자</h4>
-              <p class="text-[15px] text-slate-500 font-medium">유상·무상증자, 가수금,<br>상환전환우선주</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                📉</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">감자</h4>
-              <p class="text-[15px] text-slate-500 font-medium">유상감자, 무상감자, 이익소각</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                📜</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">사채</h4>
-              <p class="text-[15px] text-slate-500 font-medium">전환사채</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                📍</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">지점</h4>
-              <p class="text-[15px] text-slate-500 font-medium">설치, 이전</p>
-            </div>
-
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                📘</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">정관</h4>
-              <p class="text-[15px] text-slate-500 font-medium">변경, 제작</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🔚</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">법인해산</h4>
-              <p class="text-[15px] text-slate-500 font-medium">청산, 회사계속</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🏢</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">본점이전</h4>
-              <p class="text-[15px] text-slate-500 font-medium">관내, 관외</p>
-            </div>
-            <div class="panel p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-blue-50/50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-blue-100/50">
-                🎯</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">목적</h4>
-              <p class="text-[15px] text-slate-500 font-medium">추가, 삭제</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-24" id="detail-realestate">
-          <div class="flex flex-col items-center justify-center text-center gap-4 mb-12">
-            <h3 class="text-[32px] font-extrabold tracking-tight text-slate-800">부동산등기 상세업무</h3>
-            <div class="w-12 h-1.5 bg-blue-600 rounded-full opacity-80"></div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="panel-soft border p-8 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-sm border border-blue-100">
-                👪</div>
-              <h4 class="font-extrabold text-[20px] text-slate-800 mb-2">상속</h4>
-              <p class="text-[15px] text-blue-700 font-bold">법정, 협의</p>
-              <p class="text-[15px] text-slate-500 mt-5 leading-[1.7]">피상속인의 부동산을 상속인에게 이전하는 절차를 깔끔하게 처리합니다.</p>
-            </div>
-            <div class="panel-soft border p-8 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-sm border border-blue-100">
-                🎁</div>
-              <h4 class="font-extrabold text-[20px] text-slate-800 mb-2">증여</h4>
-              <p class="text-[15px] text-blue-700 font-bold">부담부증여</p>
-              <p class="text-[15px] text-slate-500 mt-5 leading-[1.7]">절세와 권리 보호를 위한 증여 과정의 등기 이전을 빠르게 지원합니다.</p>
-            </div>
-            <div class="panel-soft border p-8 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-sm border border-blue-100">
-                🏠</div>
-              <h4 class="font-extrabold text-[20px] text-slate-800 mb-2">매매</h4>
-              <p class="text-[15px] text-blue-700 font-bold">소유권 이전</p>
-              <p class="text-[15px] text-slate-500 mt-5 leading-[1.7]">매매 계약에 따른 소유권 변경과 잔금 처리 과정의 등기를 완벽히 검토합니다.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-24" id="detail-civil">
-          <div class="flex flex-col items-center justify-center text-center gap-4 mb-12">
-            <h3 class="text-[32px] font-extrabold tracking-tight text-slate-800">민사분쟁 상세업무</h3>
-            <div class="w-12 h-1.5 bg-blue-700 rounded-full opacity-80"></div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                🔔</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">독촉</h4>
-              <p class="text-[15px] text-slate-500 font-medium">지급명령</p>
-            </div>
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                ⚖️</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">소송</h4>
-              <p class="text-[15px] text-slate-500 font-medium">소액사건</p>
-            </div>
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                🔨</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">경매</h4>
-              <p class="text-[15px] text-slate-500 font-medium">강제, 임의</p>
-            </div>
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                🔍</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">재산명시</h4>
-              <p class="text-[15px] text-slate-500 font-medium">재산조회, 채무불이행자 명부등재</p>
-            </div>
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                🛑</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">압류</h4>
-              <p class="text-[15px] text-slate-500 font-medium">추심</p>
-            </div>
-            <div class="panel border p-7 hover:-translate-y-1.5 transition duration-300">
-              <div
-                class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-inner border border-slate-100">
-                🛡️</div>
-              <h4 class="font-extrabold text-[19px] text-slate-800 mb-2">전세사기</h4>
-              <p class="text-[15px] text-slate-500 font-medium">안전한 계약 및 대응</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== EXPERTS HEADER ===== -->
-    <section id="experts" class="bg-[#1a345a] py-32">
-      <div class="relative flex items-center justify-center text-center overflow-hidden">
-        <div
-          class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center bg-fixed transform scale-105 opacity-20">
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#1a345a]/90 to-[#1a345a]"></div>
-        <div class="relative z-10 container flex flex-col items-center">
-          <div class="eyebrow text-blue-400 tracking-[0.2em] mb-4">Experts</div>
-          <h2 class="section-title text-white">전문가 소개</h2>
-          <p class="mt-4 text-[17px] text-slate-400 font-medium leading-relaxed">풍부한 경험을 갖춘 법무사 김현수 사무소의 핵심 인력을 소개합니다.
+  <main>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Law Office Kim Hyunsoo</p>
+          <h1 id="hero-title">신뢰를 결과로 증명합니다.</h1>
+          <p class="hero-lead">
+            법인등기, 부동산등기, 민사분쟁을 절차와 문서 중심으로 검토합니다.
+            중요한 결정 앞에서 필요한 다음 단계를 분명하게 안내합니다.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EXPERTS PORTRAIT AREA ===== -->
-    <section class="bg-white py-32">
-      <div class="container relative z-20">
-        <div class="experts-visual-container">
-          <img src="photo-2.jpg" alt="법무사 김현수, 사무장 장재혁" class="experts-portrait">
-
-          <div class="glass-profile left">
-            <div class="label">Judicial Scrivener</div>
-            <div class="name">법무사 김현수</div>
-          </div>
-
-          <div class="glass-profile right">
-            <div class="label">Office Manager</div>
-            <div class="name">사무장 장재혁</div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">상담 요청</a>
+            <a class="btn btn-outline" href="#services">업무영역 보기</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== FREE SUPPORT ===== -->
-    <section id="support" class="bg-slate-50 pb-28">
-      <div
-        class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden bg-gradient-to-r from-[#143267] to-[#1d4fba]">
-        <div class="relative z-10 container flex flex-col items-center">
-          <div class="eyebrow text-blue-200 tracking-[0.2em] mb-4 opacity-80">Customer Support</div>
-          <h2 class="section-title text-white">법인설립 고객지원</h2>
-          <p class="mt-5 text-[17px] text-blue-100/80 font-medium">안정적인 시작을 위한 다양한 혜택을 지원합니다.</p>
-        </div>
+    <div class="hero-summary" aria-label="핵심 업무 요약">
+      <div>
+        <span>01 Corporate</span>
+        <strong>법인설립 · 임원변경 · 본점이전 · 증자</strong>
       </div>
-
-      <div class="container">
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-          <div class="panel p-10 text-center hover:-translate-y-2 transition duration-300 shadow-md">
-            <div
-              class="w-20 h-20 bg-blue-50/80 rounded-3xl mx-auto flex items-center justify-center text-[34px] mb-8 shadow-inner border border-blue-100/50">
-              📋
-            </div>
-            <h3 class="text-[22px] font-extrabold text-slate-800 mb-4 tracking-tight">최신정관제작</h3>
-            <p class="text-[16px] text-slate-500 font-medium leading-[1.6]">최신 개정 법령에 완벽하게 맞춘 기업 맞춤형 정관을 무료로 제작해 드립니다.
-            </p>
-          </div>
-          <div class="panel p-10 text-center hover:-translate-y-2 transition duration-300 shadow-md">
-            <div
-              class="w-20 h-20 bg-blue-50/80 rounded-3xl mx-auto flex items-center justify-center text-[34px] mb-8 shadow-inner border border-blue-100/50">
-              📄
-            </div>
-            <h3 class="text-[22px] font-extrabold text-slate-800 mb-4 tracking-tight">등기부등본, 인감증명서</h3>
-            <p class="text-[16px] text-slate-500 font-medium leading-[1.6]">설립 완료 후 실무에 즉시 사용할 수 있도록 기본 증명 서류 발급을 지원합니다.
-            </p>
-          </div>
-          <div class="panel p-10 text-center hover:-translate-y-2 transition duration-300 shadow-md">
-            <div
-              class="w-20 h-20 bg-blue-50/80 rounded-3xl mx-auto flex items-center justify-center text-[34px] mb-8 shadow-inner border border-blue-100/50">
-              🔏
-            </div>
-            <h3 class="text-[22px] font-extrabold text-slate-800 mb-4 tracking-tight">법인도장</h3>
-            <p class="text-[16px] text-slate-500 font-medium leading-[1.6]">운영에 반드시 필요한 최고급 법인 인감을 깔끔하게 제작해 드립니다.</p>
-          </div>
-        </div>
+      <div>
+        <span>02 Real Estate</span>
+        <strong>상속 · 증여 · 매매 · 소유권 이전</strong>
       </div>
-    </section>
-
-    <!-- ===== FINAL: MAP & FORM ===== -->
-    <section id="contact" class="bg-white pb-32">
-      <div class="relative py-32 flex items-center justify-center text-center mb-20 overflow-hidden">
-        <div
-          class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center bg-fixed transform scale-105">
-        </div>
-        <div class="absolute inset-0 bg-slate-900/65"></div>
-        <div class="relative z-10 container flex flex-col items-center">
-          <div class="eyebrow text-blue-400 tracking-[0.2em] mb-4">Contact Us</div>
-          <h2 class="section-title text-white">오시는 길 및 상담신청</h2>
-          <p class="mt-5 text-[17px] text-slate-300 font-medium">언제든 귀하의 고민을 듣고 해결책을 제시해 드리겠습니다.</p>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="contact-wrap">
-
-          <div class="panel p-8 sm:p-10 flex flex-col justify-between border-slate-200">
-            <div>
-              <div class="eyebrow text-blue-600 tracking-[0.2em] mb-2">Location</div>
-              <h3 class="text-[28px] font-extrabold mb-7 tracking-tight">오시는 길</h3>
-              <div
-                class="w-full h-64 sm:h-72 bg-slate-100 border border-slate-200 shadow-inner rounded-[24px] mb-8 overflow-hidden">
-                <iframe src="https://www.google.com/maps?q=서울특별시+송파구+법원로8길+13+문정헤리움써밋타워&output=embed" loading="lazy"
-                  class="w-full h-full border-0"></iframe>
-              </div>
-              <p class="font-extrabold text-slate-700 text-[18px] leading-[1.7] mb-8">
-                서울특별시 송파구 법원로8길 13, 12층 1213호<br>
-                (문정동, 문정헤리움써밋타워)
-              </p>
-            </div>
-
-            <a href="tel:02-430-0980"
-              class="btn-dark w-full h-16 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all flex items-center justify-center gap-4 mt-auto">
-              <span class="text-[14px] font-bold opacity-80 tracking-widest">상담전화</span>
-              <span class="text-[24px] font-black tracking-tight">02-430-0980</span>
-            </a>
-          </div>
-
-          <div class="panel-soft p-8 sm:p-10 border-slate-200">
-            <div class="eyebrow text-blue-600 tracking-[0.2em] mb-2">Free Consultation</div>
-            <h3 class="text-[28px] font-extrabold mb-8 tracking-tight">무료상담 신청</h3>
-
-            <form id="consultForm" method="POST" action="mailto:fwpna@naver.com" enctype="text/plain"
-              class="flex flex-col gap-6">
-              <div class="bg-white/80 p-6 sm:p-7 rounded-[26px] border border-slate-200 shadow-sm flex flex-col gap-5">
-                <div>
-                  <label class="block text-[15px] font-bold text-slate-700 mb-2 pl-1">성함</label>
-                  <input type="text" name="name"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm font-medium text-[16px]"
-                    placeholder="이름을 입력해주세요" required>
-                </div>
-                <div>
-                  <label class="block text-[15px] font-bold text-slate-700 mb-2 pl-1">연락처</label>
-                  <input type="tel" name="phone"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm font-medium text-[16px]"
-                    placeholder="연락 받으실 번호를 입력해주세요" required>
-                </div>
-                <div>
-                  <label class="block text-[15px] font-bold text-slate-700 mb-2 pl-1">상담내용</label>
-                  <textarea name="message"
-                    class="w-full bg-white border border-slate-200 rounded-2xl px-5 py-5 h-36 resize-none outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm font-medium text-[16px]"
-                    placeholder="궁금하신 내용을 간단히 남겨주시면 확인 후 바로 연락드리겠습니다."></textarea>
-                </div>
-
-                <label class="flex items-center gap-3 px-1 cursor-pointer">
-                  <input type="checkbox" name="privacy_agree" required
-                    class="w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-200">
-                  <span class="text-[15px] font-semibold text-slate-700">개인정보 수집에 동의합니다.</span>
-                </label>
-              </div>
-
-              <button type="submit"
-                class="btn-dark w-full mt-2 h-16 rounded-2xl text-[18px] shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                무료상담 신청 보내기
-              </button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container" style="padding: 64px 0 72px">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8">
-        <div>
-          <div class="text-[24px] font-extrabold text-white mb-6">법무사 김현수 사무소</div>
-          <p class="text-slate-400 leading-[1.95] text-[15px]">
-            대표자 : 김현수 법무사<br>
-            사업자등록번호 : 722-06-02376<br>
-            주소 : 서울특별시 송파구 법원로8길 13, 12층 1213호 (문정동, 문정헤리움써밋타워)
-          </p>
-        </div>
-        <div class="flex flex-col lg:items-end lg:text-right">
-          <p class="text-slate-400 leading-[1.95] mb-8 text-[15px]">
-            TEL : 02-430-0980<br>
-            FAX : 02-431-0980<br>
-            이메일 : fwpna@naver.com
-          </p>
-          <div class="flex flex-wrap gap-3 lg:justify-end">
-            <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener"
-              class="text-[14px] bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2.5 rounded-xl transition font-medium">
-              법인등기·부동산등기·민사분쟁 블로그
-            </a>
-            <span
-              class="text-[14px] bg-white/5 border border-white/10 text-slate-300 px-5 py-2.5 rounded-xl font-medium">
-              개인회생 홈페이지 (준비중)
-            </span>
-            <a href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener"
-              class="text-[14px] bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2.5 rounded-xl transition font-medium">
-              개인회생 블로그
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        class="border-t border-white/10 mt-12 pt-8 text-center sm:text-left lg:text-center text-slate-500 text-[13px] font-medium">
-        &copy; 2026 법무사 김현수 사무소. All rights reserved.
+      <div>
+        <span>03 Civil Dispute</span>
+        <strong>지급명령 · 소액사건 · 경매 · 압류</strong>
       </div>
     </div>
+
+    <section class="section section-soft" id="quick-links" aria-labelledby="quick-title">
+      <div class="container">
+        <div class="section-head center">
+          <p class="section-kicker">Service Gateway</p>
+          <h2 class="section-title" id="quick-title">필요한 업무로 바로 연결됩니다.</h2>
+          <p class="section-copy">주요 업무와 상담 채널을 한 화면에서 확인하실 수 있습니다.</p>
+        </div>
+
+        <div class="quick-layout">
+          <article class="portrait-card">
+            <img src="photo-1.jpg" alt="법무사 김현수 사무소" />
+            <div class="portrait-label">
+              <span>Representative Judicial Scrivener</span>
+              <strong>대표법무사 김현수</strong>
+            </div>
+          </article>
+
+          <div class="quick-side">
+            <article class="overview-card">
+              <div class="overview-title">Core Service Group</div>
+              <div class="overview-list">
+                <a href="#detail-corp">
+                  <span>01</span>
+                  <strong>법인등기</strong>
+                </a>
+                <a href="#detail-realestate">
+                  <span>02</span>
+                  <strong>부동산등기</strong>
+                </a>
+                <a href="#detail-civil">
+                  <span>03</span>
+                  <strong>민사분쟁</strong>
+                </a>
+              </div>
+              <a class="btn btn-blue" href="https://blog.naver.com/imdgking" target="_blank" rel="noopener">업무 블로그</a>
+            </article>
+
+            <article class="channel-card disabled-card">
+              <div>
+                <small>Service Group 02</small>
+                <h3>개인회생 홈페이지</h3>
+                <p>홈페이지 준비중</p>
+              </div>
+              <span class="link">준비중</span>
+            </article>
+
+            <article class="channel-card">
+              <div>
+                <small>Service Group 03</small>
+                <h3>개인회생 블로그</h3>
+                <p>개인회생 관련 안내 채널입니다.</p>
+              </div>
+              <a class="link" href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener">블로그 바로가기 →</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="phone-cta" aria-label="상담 전화 안내">
+          <a href="tel:02-430-0980">
+            <span>무료전화상담</span>
+            <strong>02-430-0980</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head center">
+          <p class="section-kicker">Core Services</p>
+          <h2 class="section-title" id="services-title">주요 업무 분야</h2>
+          <p class="section-copy">세 가지 핵심 업무를 기준으로 필요한 절차를 안내합니다.</p>
+        </div>
+
+        <div class="service-grid">
+          <a class="service-card" href="#detail-corp">
+            <span>01</span>
+            <h3>법인등기</h3>
+            <p>법인설립, 변경, 자본, 조직 정비 절차를 지원합니다.</p>
+          </a>
+          <a class="service-card" href="#detail-realestate">
+            <span>02</span>
+            <h3>부동산등기</h3>
+            <p>상속, 증여, 매매에 따른 권리 이전을 검토합니다.</p>
+          </a>
+          <a class="service-card" href="#detail-civil">
+            <span>03</span>
+            <h3>민사분쟁</h3>
+            <p>채권 확보와 분쟁 대응의 실행 절차를 안내합니다.</p>
+          </a>
+        </div>
+
+        <div class="detail-group" id="detail-corp">
+          <div class="detail-head">
+            <h3>법인등기 상세업무</h3>
+            <p>설립부터 변경, 자본, 정관, 해산까지</p>
+          </div>
+          <div class="detail-grid">
+            <article class="detail-card"><strong>법인설립</strong><span>주식회사, 유한회사, 노무법인, 특수법인</span></article>
+            <article class="detail-card"><strong>민법법인</strong><span>재단법인, 사단법인</span></article>
+            <article class="detail-card"><strong>조합설립</strong><span>협동조합</span></article>
+            <article class="detail-card"><strong>법인합병·분할</strong><span>완전자회사</span></article>
+            <article class="detail-card"><strong>증자</strong><span>유상·무상증자, 가수금, 상환전환우선주</span></article>
+            <article class="detail-card"><strong>감자</strong><span>유상감자, 무상감자, 이익소각</span></article>
+            <article class="detail-card"><strong>사채</strong><span>전환사채</span></article>
+            <article class="detail-card"><strong>지점</strong><span>설치, 이전</span></article>
+            <article class="detail-card"><strong>정관</strong><span>변경, 제작</span></article>
+            <article class="detail-card"><strong>법인해산</strong><span>청산, 회사계속</span></article>
+            <article class="detail-card"><strong>본점이전</strong><span>관내, 관외</span></article>
+            <article class="detail-card"><strong>목적</strong><span>추가, 삭제</span></article>
+          </div>
+        </div>
+
+        <div class="detail-group" id="detail-realestate">
+          <div class="detail-head">
+            <h3>부동산등기 상세업무</h3>
+            <p>상속, 증여, 매매 등 권리 이전 절차</p>
+          </div>
+          <div class="detail-grid three">
+            <article class="detail-card"><strong>상속</strong><span>법정, 협의</span></article>
+            <article class="detail-card"><strong>증여</strong><span>부담부증여</span></article>
+            <article class="detail-card"><strong>매매</strong><span>소유권 이전</span></article>
+          </div>
+        </div>
+
+        <div class="detail-group" id="detail-civil">
+          <div class="detail-head">
+            <h3>민사분쟁 상세업무</h3>
+            <p>채권 확보와 분쟁 대응 절차</p>
+          </div>
+          <div class="detail-grid three">
+            <article class="detail-card"><strong>독촉</strong><span>지급명령</span></article>
+            <article class="detail-card"><strong>소송</strong><span>소액사건</span></article>
+            <article class="detail-card"><strong>경매</strong><span>강제, 임의</span></article>
+            <article class="detail-card"><strong>재산명시</strong><span>재산조회, 채무불이행자 명부등재</span></article>
+            <article class="detail-card"><strong>압류</strong><span>추심</span></article>
+            <article class="detail-card"><strong>전세사기</strong><span>안전한 계약 및 대응</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="experts" aria-labelledby="experts-title">
+      <div class="container experts-layout">
+        <div class="experts-copy">
+          <p class="eyebrow">Experts</p>
+          <h2 id="experts-title">전문가 소개</h2>
+          <p>풍부한 경험을 갖춘 법무사 김현수 사무소의 핵심 인력을 소개합니다.</p>
+        </div>
+        <div class="experts-photo">
+          <img src="photo-2.jpg" alt="법무사 김현수, 사무장 장재혁" />
+          <div class="expert-tags">
+            <div>
+              <span>Judicial Scrivener</span>
+              <strong>법무사 김현수</strong>
+            </div>
+            <div>
+              <span>Office Manager</span>
+              <strong>사무장 장재혁</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="support" aria-labelledby="support-title">
+      <div class="container">
+        <div class="section-head center">
+          <p class="section-kicker">Customer Support</p>
+          <h2 class="section-title" id="support-title">법인설립 고객지원</h2>
+          <p class="section-copy">법인 설립 이후 실무에 필요한 기본 준비를 함께 안내합니다.</p>
+        </div>
+        <div class="support-grid">
+          <article class="support-card">
+            <span>01</span>
+            <h3>최신정관제작</h3>
+            <p>설립 목적과 운영 구조에 맞춘 정관 준비를 지원합니다.</p>
+          </article>
+          <article class="support-card">
+            <span>02</span>
+            <h3>등기부등본, 인감증명서</h3>
+            <p>설립 후 필요한 기본 증명 서류 발급 절차를 안내합니다.</p>
+          </article>
+          <article class="support-card">
+            <span>03</span>
+            <h3>법인도장</h3>
+            <p>법인 운영에 필요한 인감 관련 준비 사항을 확인합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head center">
+          <p class="section-kicker">Contact Us</p>
+          <h2 class="section-title" id="contact-title">오시는 길 및 상담신청</h2>
+          <p class="section-copy">현재 상황과 희망 일정을 남겨주시면 검토 후 연락드리겠습니다.</p>
+        </div>
+
+        <div class="contact-layout">
+          <article class="contact-card">
+            <h3>오시는 길</h3>
+            <div class="map">
+              <iframe title="법무사 김현수 사무소 위치" src="https://www.google.com/maps?q=서울특별시+송파구+법원로8길+13+문정헤리움써밋타워&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="info-list">
+              <div class="info-row">
+                <strong>주소</strong>
+                <span>서울특별시 송파구 법원로8길 13, 12층 1213호<br />(문정동, 문정헤리움써밋타워)</span>
+              </div>
+              <div class="info-row">
+                <strong>전화</strong>
+                <span><a href="tel:02-430-0980">02-430-0980</a></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <h3>무료상담 신청</h3>
+            <form id="consultForm" method="POST" action="mailto:fwpna@naver.com" enctype="text/plain">
+              <div class="field">
+                <label for="name">성함</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="성함을 입력해주세요" required />
+              </div>
+              <div class="field">
+                <label for="phone">연락처</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="연락 받으실 번호" required />
+              </div>
+              <div class="field">
+                <label for="service">상담 분야</label>
+                <input id="service" name="service" type="text" placeholder="예: 법인설립, 상속등기, 지급명령" />
+              </div>
+              <div class="field">
+                <label for="message">상담 내용</label>
+                <textarea id="message" name="message" placeholder="궁금하신 내용을 간단히 남겨주세요."></textarea>
+              </div>
+              <label class="privacy">
+                <input type="checkbox" name="privacy_agree" required />
+                <span>상담 회신을 위한 개인정보 수집에 동의합니다.</span>
+              </label>
+              <button class="btn btn-blue" type="submit">무료상담 신청 보내기</button>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>법무사 김현수 사무소</strong>
+        <p>
+          대표자 : 김현수 법무사<br />
+          사업자등록번호 : 722-06-02376<br />
+          주소 : 서울특별시 송파구 법원로8길 13, 12층 1213호 (문정동, 문정헤리움써밋타워)
+        </p>
+      </div>
+      <div>
+        <p>
+          TEL : 02-430-0980<br />
+          FAX : 02-431-0980<br />
+          이메일 : fwpna@naver.com
+        </p>
+        <div class="footer-links">
+          <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener">법인등기·부동산등기·민사분쟁 블로그</a>
+          <span>개인회생 홈페이지 준비중</span>
+          <a href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener">개인회생 블로그</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">&copy; 2026 법무사 김현수 사무소. All rights reserved.</div>
   </footer>
 
   <script>
-    const header = document.querySelector('.header');
+    const header = document.getElementById("siteHeader");
+
     function syncHeader() {
       if (!header) return;
-      if (window.scrollY > 24) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
     }
-    syncHeader();
-    window.addEventListener('scroll', syncHeader, { passive: true });
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) {
-          e.preventDefault();
-          t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    syncHeader();
+    window.addEventListener("scroll", syncHeader, { passive: true });
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
-    const consultForm = document.getElementById('consultForm');
+    const consultForm = document.getElementById("consultForm");
+
     if (consultForm) {
-      consultForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+      consultForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
         const name = this.name.value.trim();
         const phone = this.phone.value.trim();
+        const service = this.service.value.trim();
         const message = this.message.value.trim();
-
-        const subject = `[무료상담 신청] ${name || '이름 미입력'}`;
+        const subject = `[무료상담 신청] ${name || "이름 미입력"}`;
         const body = [
-          '무료상담 신청이 접수되었습니다.',
-          '',
+          "무료상담 신청 내용입니다.",
+          "",
           `성함: ${name}`,
           `연락처: ${phone}`,
-          '',
-          '상담내용:',
-          message || '(내용 없음)'
-        ].join('\n');
+          `상담 분야: ${service || "(미입력)"}`,
+          "",
+          "상담 내용:",
+          message || "(내용 없음)"
+        ].join("\n");
 
         window.location.href = `mailto:fwpna@naver.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
