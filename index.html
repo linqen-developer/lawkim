@@ -114,6 +114,13 @@
       min-width: max-content;
     }
 
+    .brand-mark {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
     .brand img {
       width: 34px;
       height: 34px;
@@ -137,6 +144,7 @@
       color: rgba(255, 255, 255, .72);
       font-size: .78rem;
       font-weight: 700;
+      text-align: center;
       transition: color .25s ease;
     }
 
@@ -724,8 +732,10 @@
     .experts-photo img {
       width: 100%;
       aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center center;
+      transform: scaleX(-1);
+      background: #eef0f2;
     }
 
     .expert-tags {
@@ -1887,7 +1897,7 @@
     .site-header,
     .site-header.is-scrolled {
       padding-top: 0;
-      background: rgba(255, 255, 255, .96);
+      background: #ffffff;
       border-bottom: 1px solid rgba(15, 76, 129, .14);
       box-shadow: none;
       color: var(--blue-ink);
@@ -1900,9 +1910,18 @@
       padding: 0;
       border: 0;
       border-radius: 0;
-      background: transparent;
+      background: #ffffff;
       box-shadow: none;
       color: inherit;
+    }
+
+    .brand {
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      flex: 0 0 auto;
     }
 
     .brand img {
@@ -1924,6 +1943,9 @@
       color: var(--classic-blue);
       font-size: .75rem;
       font-weight: 800;
+      margin-top: 3px;
+      line-height: 1.1;
+      text-align: center;
     }
 
     .nav,
@@ -2342,11 +2364,18 @@
       border: 1px solid rgba(255, 255, 255, .22);
       box-shadow: none;
       background: rgba(255, 255, 255, .06);
+      width: min(100%, 560px);
+      justify-self: end;
     }
 
     .experts-photo img {
-      aspect-ratio: 16 / 10;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+      object-position: center center;
       filter: none;
+      transform: none;
+      background: #eef0f2;
     }
 
     .expert-tags {
@@ -2470,10 +2499,12 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a class="brand" href="#hero" aria-label="법무사 김현수 사무소 메인으로 이동">
-        <img src="logo.png" alt="" />
+        <span class="brand-mark">
+          <img src="logo.png" alt="" />
+          <span class="brand-tel">TEL 02-430-0980</span>
+        </span>
         <span>
           <span class="brand-name">법무사 김현수 사무소</span>
-          <span class="brand-tel">TEL 02-430-0980</span>
         </span>
       </a>
       <nav class="nav" aria-label="주요 메뉴">
@@ -2507,15 +2538,15 @@
 
     <div class="hero-summary" aria-label="핵심 업무 요약">
       <div>
-        <span>01 Corporate</span>
+        <span>01 법인</span>
         <strong>법인설립 · 임원변경 · 본점이전 · 증자</strong>
       </div>
       <div>
-        <span>02 Real Estate</span>
+        <span>02 부동산</span>
         <strong>상속 · 증여 · 매매 · 소유권 이전</strong>
       </div>
       <div>
-        <span>03 Civil Dispute</span>
+        <span>03 민사</span>
         <strong>지급명령 · 소액사건 · 경매 · 압류</strong>
       </div>
     </div>
@@ -2530,7 +2561,12 @@
 
         <div class="quick-layout">
           <article class="portrait-card">
-            <img src="photo-1.jpg" alt="법무사 김현수 사무소" />
+            <img
+              src="photo-1-web-clean-640.jpg"
+              srcset="photo-1-web-clean-640.jpg 640w, photo-1-web-clean-1280.jpg 1280w"
+              sizes="(max-width: 980px) calc(100vw - 28px), 486px"
+              alt="법무사 김현수 사무소"
+            />
             <div class="portrait-label">
               <span>Representative Judicial Scrivener</span>
               <strong>대표법무사 김현수</strong>
@@ -2614,7 +2650,7 @@
 
         <div class="detail-group" id="detail-corp">
           <div class="detail-head">
-            <h3>법인등기 상세업무</h3>
+            <h3>법인상세업무</h3>
             <p>설립부터 변경, 자본, 정관, 해산까지</p>
           </div>
           <div class="detail-grid">
@@ -2635,7 +2671,7 @@
 
         <div class="detail-group" id="detail-realestate">
           <div class="detail-head">
-            <h3>부동산등기 상세업무</h3>
+            <h3>부동산 상세업무</h3>
             <p>상속, 증여, 매매 등 권리 이전 절차</p>
           </div>
           <div class="detail-grid three">
@@ -2647,7 +2683,7 @@
 
         <div class="detail-group" id="detail-civil">
           <div class="detail-head">
-            <h3>민사분쟁 상세업무</h3>
+            <h3>민사 상세업무</h3>
             <p>채권 확보와 분쟁 대응 절차</p>
           </div>
           <div class="detail-grid three">
@@ -2670,7 +2706,7 @@
           <p>풍부한 경험을 갖춘 법무사 김현수 사무소의 핵심 인력을 소개합니다.</p>
         </div>
         <div class="experts-photo">
-          <img src="photo-2.jpg" alt="법무사 김현수, 사무장 장재혁" />
+          <img src="photo-2-wide.jpg" alt="법무사 김현수, 사무장 장재혁" />
           <div class="expert-tags">
             <div>
               <span>Judicial Scrivener</span>
