@@ -1906,7 +1906,7 @@
 
     .header-inner,
     .site-header.is-scrolled .header-inner {
-      min-height: 76px;
+      min-height: 86px;
       padding: 0;
       border: 0;
       border-radius: 0;
@@ -1917,16 +1917,24 @@
 
     .brand {
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .brand-mark {
+      display: inline-flex;
       flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-text {
+      display: inline-flex;
+      align-items: center;
     }
 
     .brand img {
-      width: 34px;
-      height: 34px;
+      width: 52px;
+      height: 52px;
       border-radius: 4px;
       border: 1px solid rgba(15, 76, 129, .18);
       box-shadow: none;
@@ -1934,8 +1942,9 @@
 
     .brand-name {
       color: var(--blue-ink);
-      font-size: 1rem;
+      font-size: 1.08rem;
       font-weight: 900;
+      line-height: 1;
     }
 
     .brand-tel,
@@ -2048,6 +2057,28 @@
     .hero-actions {
       gap: 10px;
       margin-top: 34px;
+    }
+
+    .hero-phone {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 34px;
+      border: 1px solid rgba(255, 255, 255, .42);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(7, 31, 58, .42);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .2);
+      font-size: clamp(1.28rem, 2.6vw, 1.72rem);
+      font-weight: 900;
+      line-height: 1;
+      transform: translateX(-50%);
+      backdrop-filter: blur(10px);
     }
 
     .hero-summary {
@@ -2446,7 +2477,7 @@
 
       .header-inner,
       .site-header.is-scrolled .header-inner {
-        min-height: 70px;
+        min-height: 78px;
         border-radius: 0;
       }
 
@@ -2466,13 +2497,34 @@
     }
 
     @media (max-width: 560px) {
+      .brand {
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-name {
+        font-size: .96rem;
+      }
+
       .hero {
         min-height: 82svh;
       }
 
       .hero-inner {
         min-height: 82svh;
-        padding: 104px 0 72px;
+        padding: 104px 0 118px;
+      }
+
+      .hero-phone {
+        bottom: 24px;
+        min-height: 54px;
+        padding: 0 24px;
+        font-size: 1.12rem;
+        white-space: nowrap;
       }
 
       .hero h1 {
@@ -2501,9 +2553,8 @@
       <a class="brand" href="#hero" aria-label="법무사 김현수 사무소 메인으로 이동">
         <span class="brand-mark">
           <img src="logo.png" alt="" />
-          <span class="brand-tel">TEL 02-430-0980</span>
         </span>
-        <span>
+        <span class="brand-text">
           <span class="brand-name">법무사 김현수 사무소</span>
         </span>
       </a>
@@ -2534,6 +2585,7 @@
           </div>
         </div>
       </div>
+      <a class="hero-phone" href="tel:02-430-0980" aria-label="전화 상담 02-430-0980">TEL 02-430-0980</a>
     </section>
 
     <div class="hero-summary" aria-label="핵심 업무 요약">
