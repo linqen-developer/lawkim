@@ -1935,16 +1935,23 @@
     .brand img {
       width: 52px;
       height: 52px;
-      border-radius: 4px;
-      border: 1px solid rgba(15, 76, 129, .18);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
       box-shadow: none;
+      object-fit: contain;
     }
 
     .brand-name {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
       color: var(--blue-ink);
-      font-size: 1.08rem;
+      font-size: 2.35rem;
       font-weight: 900;
-      line-height: 1;
+      line-height: 1.05;
+      white-space: nowrap;
     }
 
     .brand-tel,
@@ -2105,8 +2112,9 @@
 
     .hero-summary span {
       color: var(--classic-blue);
-      font-size: .78rem;
+      font-size: 1.02rem;
       font-weight: 900;
+      line-height: 1.55;
     }
 
     .hero-summary strong {
@@ -2469,6 +2477,27 @@
       border-radius: 2px;
     }
 
+    @media (max-width: 1180px) {
+      .brand {
+        gap: 12px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .brand-name {
+        min-height: 48px;
+        font-size: 1.75rem;
+      }
+
+      .site-header .btn-primary {
+        padding: 0 16px;
+        font-size: .9rem;
+      }
+    }
+
     @media (max-width: 860px) {
       .site-header,
       .site-header.is-scrolled {
@@ -2507,7 +2536,8 @@
       }
 
       .brand-name {
-        font-size: .96rem;
+        min-height: 44px;
+        font-size: 1.08rem;
       }
 
       .hero {
