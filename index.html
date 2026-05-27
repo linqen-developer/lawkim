@@ -1964,6 +1964,10 @@
       text-align: center;
     }
 
+    .header-cta-short {
+      display: none;
+    }
+
     .nav,
     .site-header.is-scrolled .nav {
       color: #3a4655;
@@ -2526,8 +2530,14 @@
     }
 
     @media (max-width: 560px) {
+      .header-inner,
+      .site-header.is-scrolled .header-inner {
+        gap: 8px;
+      }
+
       .brand {
         gap: 10px;
+        min-width: 0;
       }
 
       .brand img {
@@ -2538,6 +2548,22 @@
       .brand-name {
         min-height: 44px;
         font-size: 1.08rem;
+      }
+
+      .site-header .header-cta {
+        flex: 0 0 auto;
+        min-height: 38px;
+        gap: 6px;
+        padding: 0 10px;
+        font-size: .78rem;
+      }
+
+      .header-cta-full {
+        display: none;
+      }
+
+      .header-cta-short {
+        display: inline;
       }
 
       .hero {
@@ -2574,6 +2600,28 @@
         border-radius: 2px;
       }
     }
+
+    @media (max-width: 380px) {
+      .brand {
+        gap: 8px;
+      }
+
+      .brand img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-name {
+        min-height: 38px;
+        font-size: .92rem;
+      }
+
+      .site-header .header-cta {
+        min-height: 36px;
+        padding: 0 9px;
+        font-size: .74rem;
+      }
+    }
   </style>
 </head>
 
@@ -2595,7 +2643,10 @@
         <a href="#support">고객 지원</a>
         <a href="#contact">오시는 길</a>
       </nav>
-      <a class="btn btn-primary" href="#contact">무료상담신청</a>
+      <a class="btn btn-primary header-cta" href="#contact">
+        <span class="header-cta-full">무료상담신청</span>
+        <span class="header-cta-short">무료상담</span>
+      </a>
     </div>
   </header>
 
