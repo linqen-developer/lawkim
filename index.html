@@ -908,6 +908,26 @@
       accent-color: var(--classic-blue);
     }
 
+    .form-honeypot {
+      display: none;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .form-status.is-success {
+      color: #167047;
+    }
+
+    .form-status.is-error {
+      color: #a12d2d;
+    }
+
     .footer {
       color: rgba(255, 255, 255, .72);
       background: var(--blue-ink);
@@ -2726,13 +2746,13 @@
               <a class="btn btn-blue" href="https://blog.naver.com/imdgking" target="_blank" rel="noopener">업무 블로그</a>
             </article>
 
-            <article class="channel-card disabled-card">
+            <article class="channel-card">
               <div>
                 <small>Service Group 02</small>
                 <h3>개인회생 홈페이지</h3>
-                <p>홈페이지 준비중</p>
+                <p>개인회생·개인파산 상담 전용 홈페이지입니다.</p>
               </div>
-              <span class="link">준비중</span>
+              <a class="link" href="https://www.lawsavelife.com/" target="_blank" rel="noopener">홈페이지 바로가기</a>
             </article>
 
             <article class="channel-card">
@@ -2909,7 +2929,15 @@
 
           <article class="contact-card">
             <h3>무료상담 신청</h3>
-            <form id="consultForm" method="POST" action="mailto:fwpna@naver.com,fwp-law@outlook.kr" enctype="text/plain">
+            <form id="consultForm" method="POST" action="https://formsubmit.co/ajax/fwpna@naver.com">
+              <input type="hidden" name="_subject" value="법무사김현수사무소 홈페이지 무료상담 신청" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="신청경로" value="법무사김현수사무소 메인 홈페이지" />
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="consultWebsite">웹사이트</label>
+                <input id="consultWebsite" name="_honey" type="text" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="field">
                 <label for="name">성함</label>
                 <input id="name" name="name" type="text" autocomplete="name" placeholder="성함을 입력해주세요" required />
@@ -2931,6 +2959,7 @@
                 <span>상담 회신을 위한 개인정보 수집에 동의합니다.</span>
               </label>
               <button class="btn btn-blue" type="submit">무료상담 신청 보내기</button>
+              <p class="form-status" role="status" aria-live="polite" data-form-status></p>
             </form>
           </article>
         </div>
@@ -2952,11 +2981,11 @@
         <p>
           TEL : 02-430-0980<br />
           FAX : 02-431-0980<br />
-          이메일 : fwpna@naver.com / fwp-law@outlook.kr
+          이메일 : fwpna@naver.com
         </p>
         <div class="footer-links">
           <a href="https://blog.naver.com/imdgking" target="_blank" rel="noopener">법인등기·부동산등기·민사분쟁 블로그</a>
-          <span>개인회생 홈페이지 준비중</span>
+          <a href="https://www.lawsavelife.com/" target="_blank" rel="noopener">개인회생 홈페이지</a>
           <a href="https://blog.naver.com/law_mussa" target="_blank" rel="noopener">개인회생 블로그</a>
         </div>
       </div>
@@ -2987,26 +3016,47 @@
     const consultForm = document.getElementById("consultForm");
 
     if (consultForm) {
-      consultForm.addEventListener("submit", function (event) {
+      const formStatus = consultForm.querySelector("[data-form-status]");
+
+      consultForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        const name = this.name.value.trim();
-        const phone = this.phone.value.trim();
-        const service = this.service.value.trim();
-        const message = this.message.value.trim();
-        const subject = `[무료상담 신청] ${name || "이름 미입력"}`;
-        const body = [
-          "무료상담 신청 내용입니다.",
-          "",
-          `성함: ${name}`,
-          `연락처: ${phone}`,
-          `상담 분야: ${service || "(미입력)"}`,
-          "",
-          "상담 내용:",
-          message || "(내용 없음)"
-        ].join("\n");
+        if (!this.reportValidity()) return;
 
-        window.location.href = `mailto:fwpna@naver.com,fwp-law@outlook.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const endpoint = this.getAttribute("action");
+        const submitButton = this.querySelector("[type='submit']");
+        const originalButtonText = submitButton.textContent;
+        const formData = new FormData(this);
+        const name = String(formData.get("name") || "").trim();
+        formData.set("_subject", `[무료상담 신청] ${name || "이름 미입력"}`);
+
+        submitButton.disabled = true;
+        submitButton.textContent = "전송 중입니다";
+        formStatus.textContent = "상담 신청을 전송하고 있습니다.";
+        formStatus.className = "form-status";
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" }
+          });
+          const result = await response.json().catch(() => null);
+
+          if (!response.ok || result?.success === false || result?.success === "false") {
+            throw new Error("Consultation form submission failed");
+          }
+
+          this.reset();
+          formStatus.textContent = "상담 신청이 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.";
+          formStatus.className = "form-status is-success";
+        } catch (error) {
+          formStatus.textContent = "전송 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 02-430-0980으로 문의해 주세요.";
+          formStatus.className = "form-status is-error";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
       });
     }
   </script>
